@@ -1,7 +1,6 @@
 import React from 'react';
 import {findDOMNode} from "react-dom";
 import Header from './common/components/header'
-import Ads from './common/components/ads'
 import Message from '../components/message'
 import styles from './common/styles/app'
 import {State} from 'react-router'
@@ -57,7 +56,6 @@ export default React.createClass({
         })()
         return (
             <div>
-                <Ads />
                 <Header ref="header" />
                 {content}
                 <Message />
