@@ -3,6 +3,7 @@ import styles from './styles/footer'
 import {Link} from 'react-router'
 
 export default React.createClass({
+    
     propTypes: {
         name: React.PropTypes.string.isRequired,
     },

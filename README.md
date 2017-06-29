@@ -1,10 +1,10 @@
 # webapp
 
-云筹 webapp
+精融汇 移动端
 
 ## 主要的技术构架
 
-    react + alt(flux的实现) + react-router + webpack  + bower + es6(babel) 
+    react + alt(flux的实现) + react-router + webpack  + bower + es6(babel)
 
 -   react <http://facebook.github.io/react/>
 -   alt <http://alt.js.org/>
@@ -16,62 +16,59 @@
 *如果正在使用 windows, 建议使用 vagrant 运行 Linux 虚拟机减少蛋疼程度(不知道说什么的请 Google)*
 
 
-### [V1.0.0 to V2.0.0](https://github.com/ggitt/webapp.cs/wiki/V1.0.0-to-V2.0.0)
-    
-    
 ## build 构建
 
 
-项目主要依赖于 nodejs 进行构建: 
+项目主要依赖于 nodejs 进行构建:
 
 ### nvm
 
 为了保持 nodejs 版本一致性，项目中使用 nvm 作为 nodejs 版本管理工具，关于安装 nvm 请查看 <https://github.com/creationix/nvm>
 
 项目使用 nodejs v5, 所以请安装 nvm install 5, 之后安装 npm 依赖包：
-    
+
     npm install -g webpack
     npm install -g gulp
     npm install -g bower
     npm install
     bower install
-    
+
 安装新的模块时，请带上 --save 参数，使其自动加入依赖文件, 例如: <code>npm install react --save</code>
-    
+
 
 ## 开发模式
 
 ### 自动刷新
 
-项目采用了 webpack-dev-server 作为默认调试服务器，在本地把项目构建过一次以后可以执行 <code>npm run start</code> 来启动服务，这时打开 <code>http://localhost:6666</code>，任何已引入项目的文件修改时，页面会自动更新，如出现意外情况请手动刷新页面。
+项目采用了 webpack-dev-server 作为默认调试服务器，在本地把项目构建过一次以后可以执行 <code>npm run start</code> 来启动服务，这时打开 <code>http://localhost:5555</code>，任何已引入项目的文件修改时，页面会自动更新，如出现意外情况请手动刷新页面。
 
 ### Nginx 代理
 
 因为需要请求后端 api 接口，为了避免跨域问题，我们需要使用 Nginx 做简单的转发处理， 请在 Nginx 配置文件加入以下配置
 
     server {
-        server_name mdev.yunchou.com;
+        server_name mdev.iafclub.com;
 
         location /api {
             proxy_pass http://mdapi.yunchou.com:88;
         }
 
         location /sockjs-node {
-            proxy_pass http://127.0.0.1:6666;
+            proxy_pass http://127.0.0.1:5555;
             proxy_http_version 1.1;
             proxy_set_header Upgrade $http_upgrade;
             proxy_set_header Connection "upgrade";
         }
 
         location / {
-            proxy_pass http://127.0.0.1:6666;
+            proxy_pass http://127.0.0.1:5555;
         }
     }
 
 
 其中 <code>/api</code> 的代理地址为后端提供的地址， 请根据实际情况更改
 
-这时项目开发地址更改为 <http://mdev.yunchou.com> ，记得更改 hosts 文件。
+这时项目开发地址更改为 <http://mdev.iafclub.com> ，记得更改 hosts 文件。
 
 
 ## 开发规范
@@ -105,6 +102,3 @@
 2.  alt - Getting Started <http://alt.js.org/guide/>
 
 ***如果不知道怎样入手，请把上面的示例全部完成一遍***
-
-
-    

@@ -1,11 +1,11 @@
 {
   "name": "webapp",
-  "version": "2.0.0",
-  "description": "webapp for yunchou.com",
+  "version": "1.0.0",
+  "description": "webapp for iafclub.com",
   "main": "app.jsx",
   "scripts": {
     "test": "",
-    "start": "node server.js --v dev",
+    "start": "node server.js --v dev --progress",
     "publish": "node build.js production",
     "build": "node build.js test"
   },

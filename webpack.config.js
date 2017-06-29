@@ -8,6 +8,7 @@ module.exports = {
         './src/app.js',
         './src/app/alt.js',
         './src/utils/request.js',
+        './assets/font/iconfont.js',
         './src/app/common/services/authentication',
     ],
     output: {

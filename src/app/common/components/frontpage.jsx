@@ -10,11 +10,16 @@ import Carousel from "../../../components/carousel"
 import Footer from '../../../components/footer'
 
 const Linkarray = (props) =>{
+    const svgData = {
+        img1: '<svg class="icon" aria-hidden="true"><use xlink:href="#icon-home-holding"></use></svg>',
+        img2: '<svg class="icon" aria-hidden="true"><use xlink:href="#icon-home-safety"></use></svg>',
+        img3: '<svg class="icon" aria-hidden="true"><use xlink:href="#icon-home-trusteeship"></use></svg>',
+    }
     return (
         <ul className="link-array">
-            <li><img src="/assets/images/index/1.png" /><div>上市公司控股</div></li>
-            <li><img src="/assets/images/index/2.png" /><div>保险本息保障</div></li>
-            <li><img src="/assets/images/index/3.png" /><div>新浪资金托管</div></li>
+            <li><svg dangerouslySetInnerHTML={{__html: svgData.img1 }} /><div>上市公司控股</div></li>
+            <li><svg dangerouslySetInnerHTML={{__html: svgData.img2 }} /><div>保险本息保障</div></li>
+            <li><svg dangerouslySetInnerHTML={{__html: svgData.img3 }} /><div>新浪资金托管</div></li>
         </ul>
     );
 }
