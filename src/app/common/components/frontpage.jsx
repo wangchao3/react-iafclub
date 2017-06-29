@@ -55,7 +55,7 @@ export default React.createClass({
             return (
                 <a href={slide.url} key={index}><img src={slide.image} /></a>
             );
-        })
+        });
         return(
             <div className="frontpage">
                 <Carousel className="index-slide">

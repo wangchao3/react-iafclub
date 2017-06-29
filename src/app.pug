@@ -11,12 +11,9 @@ html
             link(href="/dist/bundle."+ hash + '.css', rel="stylesheet")
         else
             link(href="/build/bundle.css", rel="stylesheet")
-        link(href="/assets/icon/touch-icon-120x120.png", rel="apple-touch-icon", sizes="120x120")
+        link(href="/assets/icon/touch-icon.png", rel="apple-touch-icon", sizes="120x120")
     body
         #globalMountNode
-        script.
-            var YC = {};
-            YC.current_user = {% if user %}{{user | raw | json_encode}}{% else %}null{% endif %};
         if env === 'production' && hash
             script.
                 var _hmt = _hmt || [];
