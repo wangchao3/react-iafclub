@@ -1,0 +1,17 @@
+node_modules
+lib
+npm-debug.log
+build
+dist
+.DS_Store
+index.html
+%USERPROFILE%
+.idea/.name
+.idea/compiler.xml
+.idea/encodings.xml
+.idea/misc.xml
+.idea/modules.xml
+.idea/vcs.xml
+.idea/WebApp.cs.iml
+.idea/workspace.xml
+.idea/copyright/profiles_settings.xml

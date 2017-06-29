@@ -1,0 +1,27 @@
+{
+  "name": "webapp",
+  "version": "1.0.0",
+  "homepage": "https://github.com/ggitt/webapp",
+  "description": "webapp for yunchou.com",
+  "main": "app.coffee",
+  "moduleType": [
+    "node"
+  ],
+  "authors": [
+    "Hounse"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "lib",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "ratchet": "~2.0.2",
+    "sockjs": "0.3.4",
+    "stomp-websocket": "2.3.4"
+  }
+}

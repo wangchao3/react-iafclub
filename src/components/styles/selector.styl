@@ -1,0 +1,25 @@
+@import '../../app/base'
+.select-cmp
+	position relative
+	overflow hidden
+	margin-bottom 15px
+	select
+		margin-bottom 0
+	&:after, &:before
+		content ""
+		position absolute
+		top 50%
+		right 10px
+		height 0
+		width 0
+		border-width 6px
+		border-color transparent
+		border-style solid
+	&:after
+		border-top solid 6px font
+		border-bottom none
+		transform translate3d(0, 1px, 0)
+	&:before
+		border-bottom solid 6px font
+		border-top none
+		transform translate3d(0, -7px, 0)

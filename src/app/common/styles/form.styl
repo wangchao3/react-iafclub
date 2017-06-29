@@ -1,0 +1,65 @@
+@import '../../base'
+.form-group
+    .form-control
+        display block
+        width 100%
+        height 40px
+        padding 8px
+        background #fff
+        border-radius 3px
+        border solid 1px border
+        font-size 14px
+        line-height 24px
+        &:focus
+            border-color cblue
+    &.has-error
+        .form-control
+            border-color error
+    .error-block
+        display block
+        text-align right
+        color error
+        margin -9px 0 6px
+        clear both
+.input-group
+    background transparent
+    overflow hidden
+    position relative
+    .form-control
+        width 65%
+        margin-bottom 15px
+        height 40px
+        padding 8px
+        background #fff
+        border-radius 3px
+        border solid 1px border
+        font-size 14px
+        line-height 24px
+        &:focus
+            border-color cblue
+    .btn
+        position absolute
+        top 0
+        right 0
+        width 33%
+        height 40px
+        line-height 28px
+input.form-control, textarea
+    padding 0 10px
+select
+    background #fff
+    box-shadow none
+.checkbox-input
+    span
+        margin-left 10px
+.checkbox-input.block
+    margin-bottom 10px
+.has-error
+    .error-message
+        color cred
+        margin-bottom 8px
+        margin-top -5px
+fieldset
+    border none
+    padding 0
+    margin 0

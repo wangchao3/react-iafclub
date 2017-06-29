@@ -1,0 +1,35 @@
+@import '../../base'
+.header-menu
+    position absolute
+    top 52px
+    right 5px
+    background #3F4042
+    color #fff
+    padding 0 15px
+    border-radius 3px
+    transform scale(0)
+    opacity 0
+    transition transform .3s, opacity .1s
+    &.visible
+        opacity 1
+        transform scale(1)
+    &:before
+        content ""
+        position absolute
+        right 10px
+        top -6px
+        hieght 0
+        width 0
+        border solid 6px transparent
+        border-bottom solid 6px #3F4042
+        border-top none
+    li
+        border-bottom solid 1px #545557
+        &:last-child
+            border none
+        a
+            display block
+            padding 14px 0 12px
+            color #fff
+            i
+                margin-right 10px

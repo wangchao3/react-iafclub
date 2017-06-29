@@ -1,0 +1,17 @@
+.radio-group
+    .radio-box
+        position relative
+        padding-left 10px
+        &:before
+            content: ""
+            display block
+            height 12px
+            width 12px
+            background #ddd
+            border-radius 50%
+            position absolute
+            top 5px
+            left -4px
+        &.checked
+            &:before
+                background #00b7ee

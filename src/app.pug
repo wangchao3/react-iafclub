@@ -1,0 +1,29 @@
+doctype
+html
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1, maximum-scale=1")
+        title 精融汇
+        script(src="//res.wx.qq.com/open/js/jweixin-1.0.0.js")
+        link(href="/lib/ratchet/dist/css/ratchet.min.css", rel="stylesheet")
+        link(href="/lib/ratchet/dist/css/ratchet-theme-ios.min.css", rel="stylesheet")
+        if env === 'production' && hash
+            link(href="/dist/bundle."+ hash + '.css', rel="stylesheet")
+        else
+            link(href="/build/bundle.css", rel="stylesheet")
+        link(href="/assets/icon/touch-icon-120x120.png", rel="apple-touch-icon", sizes="120x120")
+    body
+        #globalMountNode
+        script.
+            var YC = {};
+            YC.current_user = {% if user %}{{user | raw | json_encode}}{% else %}null{% endif %};
+        if env === 'production' && hash
+            script.
+                var _hmt = _hmt || [];
+                var _czc = _czc || [];
+            script(src="/dist/bundle."+ hash +".js")
+        else if env === 'test'
+            script(src="/build/bundle.js")
+        else
+            script(src="http://localhost:6565/webpack-dev-server.js")
+            script(src="/build/bundle.js")

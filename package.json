@@ -1,0 +1,67 @@
+{
+  "name": "webapp",
+  "version": "2.0.0",
+  "description": "webapp for yunchou.com",
+  "main": "app.jsx",
+  "scripts": {
+    "test": "",
+    "start": "node server.js --v dev",
+    "publish": "node build.js production",
+    "build": "node build.js test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ggitt/webapp.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ggitt/webapp/issues"
+  },
+  "homepage": "https://github.com/ggitt/webapp#readme",
+  "dependencies": {
+    "alt": "^0.18.5",
+    "axios": "^0.12.0",
+    "babel-core": "^6.5.2",
+    "babel-loader": "^6.2.2",
+    "babel-preset-es2015": "^6.5.0",
+    "babel-preset-react": "^6.5.0",
+    "body-parser": "^1.14.1",
+    "classnames": "^2.1.3",
+    "cookie-parser": "^1.4.3",
+    "css-loader": "^0.23.1",
+    "es6-promise": "^3.1.2",
+    "express": "^4.13.3",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "jade": "^1.11.0",
+    "jquery": "^3.1.1",
+    "js-cookie": "^2.1.2",
+    "json-loader": "^0.5.4",
+    "jwt-simple": "^0.4.1",
+    "mustache": "^2.2.1",
+    "nib": "^1.1.0",
+    "nunjucks": "^2.4.2",
+    "object-assign": "^4.0.1",
+    "pug": "^2.0.0-beta3",
+    "qs": "^6.2.0",
+    "react": "^0.14.7",
+    "react-dom": "^0.14.7",
+    "react-router": "^2.0.0",
+    "request": "^2.64.0",
+    "sockjs-client": "^1.0.3",
+    "stompjs": "^2.3.3",
+    "style-loader": "^0.13.0",
+    "stylus": "^0.52.4",
+    "stylus-loader": "^2.1.2",
+    "superagent": "^1.2.0",
+    "superagent-defaults": "^0.1.13",
+    "swig": "^1.4.2",
+    "webpack": "^1.12.13",
+    "webpack-dev-middleware": "^1.6.1",
+    "webpack-dev-server": "1.14.1",
+    "yargs": "^3.31.0"
+  },
+  "devDependencies": {
+    "react-hot-loader": "^1.3.0"
+  }
+}

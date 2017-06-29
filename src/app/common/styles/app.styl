@@ -1,0 +1,99 @@
+@import '../../base'
+@import './button'
+@import './form'
+@import './progressbar'
+@import './iconFont'
+html
+    height 100%
+body
+    height 100%
+*
+    -webkit-tap-highlight-color rgba(0,0,0,0)
+body, .content
+    background background
+    position static
+    font-size 14px
+    color #666
+ul, ol
+    margin 0
+    padding 0
+    list-style none
+.loading, .empty
+    padding 20px 0
+    text-align center
+    color muted
+.container
+    padding 10px 15px
+.hide
+    display none !important
+.show
+    display block !important
+.text-muted
+    color muted
+::-webkit-input-placeholder
+    color muted
+    font-size 14px
+.bar-nav~.content
+    padding-top 0
+.content>*
+    transform none
+.table-view a.navigate-right
+    line-height 1
+    padding-top 16px
+    padding-bottom 14px
+.text-center
+    text-align center
+.page-title
+    margin-bottom 20px
+a
+    color link
+
+.app-enter
+    opacity 0
+    transform translate3d(0, 50px, 0)
+    position relative
+    transition transform .2s .2s, opacity .5s .2s
+
+.app-enter.app-enter-active
+    opacity 1
+    transform translate3d(0, 0, 0)
+
+
+.app-leave
+    opacity 1
+    transition opacity .2s
+
+.app-leave.app-leave-active
+    opacity 0.01
+
+.amount-content
+    position relative
+
+.btm-btn-container
+    padding 30px 15px 10px
+
+.box
+    box()
+
+.table-view.with-icon
+    .table-view-cell
+        background-position 45px 100%
+
+.box-title
+    margin 0
+    padding 0 15px 10px
+
+.box .navigate-right
+    display block
+    position relative
+    &:after
+        right -5px
+.table-view-cell .navigate-right.label-right
+    &:after
+        color link
+    padding-right 34px
+    .pull-right
+        color link
+.text-table-view
+    .table-view-cell
+        padding-right 15px
