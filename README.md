@@ -89,7 +89,8 @@
 1.  react 中，所有自闭合标签必须在末端加上<code>/</code>, 例如常见的<code>img</code>标签，错误的写法: <code>&lt;img src=@state.data.img&gt;</code>, 正确的写法: <code>&lt;img src=@state.data.img /&gt;</code>
 2.  数据验证请在<code>ation</code>中完成，所有的请求请在<code>store</code>完成
 3.  网络请求请调用根目录 utils 中的 request.js 文件，如：<code>import request from '../../../utils/request'</code>
-4.  待续...
+4.  网站所有字体图标都是在<http://www.iconfont.cn>上进行管理，纯色的可以在已有库中去筛选，也可和有色图标通过SVG上传的方式添加到项目，请先注册账号并联系我<mailto:wangchao@iafclub.com>
+5.  未完,待续...
 
 
 ## 发布
