@@ -33,6 +33,7 @@ export default React.createClass({
         return (
             <header className={"bar bar-nav global-header" + visibleKlass}>
                 <h1 className="title">{this.state.title}</h1>
+                <Navigation />
             </header>
         );
     }

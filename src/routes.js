@@ -3,6 +3,8 @@ import {isLogin} from "./app/common/services/authentication";
 import App from "./app/app";
 import NotFound from "./app/pages/components/404";
 import indexRoute from "./app/common/routes";
+import productRoute from "./app/product/routes";
+import authRoute from './app/auth/routes';
 
 export default {
     component: "div",
@@ -22,7 +24,8 @@ export default {
             },
             indexRoute: indexRoute,
             childRoutes: [
-                
+                productRoute,
+                authRoute,
             ]
         },
         {

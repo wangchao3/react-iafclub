@@ -1,5 +1,6 @@
 import React from 'react';
 import cx from 'classnames';
+import styles from '../styles/form/text';
 
 export default React.createClass({
 
@@ -40,8 +41,15 @@ export default React.createClass({
             );
         }
         return (
-            <div className={cx("form-group", this.props.classNames, cx({'has-error': this.state.errMsg}))}>
-                <input type={this.props.type || "text"} ref="input" placeholder={placeholder} className="form-control" value={this.state.value} onChange={this.change} onFocus={this.resetError} />
+            // <div className={cx("form-group", this.props.classNames, cx({'has-error': this.state.errMsg}))}>
+            //     <input type={this.props.type || "text"} ref="input" placeholder={placeholder} className="form-control" value={this.state.value} onChange={this.change} onFocus={this.resetError} />
+            //     <div className={cx("error-message", cx({'hide': !this.state.errMsg}))}>{this.state.errMsg}</div>
+            // </div>
+            <div>
+                <div className={cx("item-input", this.props.classNames, cx({'has-error': this.state.errMsg}))}>
+                    <span className="input-label">{this.props.label}</span>
+                    <input type={this.props.type || "text"} ref="input" placeholder={placeholder} value={this.state.value} onChange={this.change} onFocus={this.resetError} />
+                </div>
                 <div className={cx("error-message", cx({'hide': !this.state.errMsg}))}>{this.state.errMsg}</div>
             </div>
         );

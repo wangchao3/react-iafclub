@@ -1,6 +1,6 @@
 import alt from '../../alt'
 import {request} from '../../../utils/request'
-import IndexActions from '../actions/index'
+import ListActions from '../actions/list'
 import url from '../constants/url'
 import {FILTERS} from '../constants/index'
 import {errorHandle} from '../../common/services/error'
@@ -10,25 +10,18 @@ class ListStore {
         this.products = null;
         this.filterIndex = 0;
         this.errMsg = null;
-        this.filters = FILTERS.slice(0, 2);
+        this.filters = FILTERS.slice(0, 3);
 
         this.bindListeners({
-            handleFetchProducts: IndexActions.FETCH_PRODUCTS,
-            changeFilter: IndexActions.CHANGE_FILTER,
+            handleFetchProducts: ListActions.FETCH_PRODUCTS,
+            changeFilter: ListActions.CHANGE_FILTER,
         });
     }
 
     handleFetchProducts() {
         this.products = null;
         let filter = this.filters[this.filterIndex].name
-        request
-        .get(url.list, {params: {status: filter,pageSize:100}})
-        .then((res) => {
-            const data = res.data;
-            if(data.error !== 'NA') return false;
-            this.products = data.list;
-            this.emitChange()
-        })
+        // fetch products API
     }
 
     changeFilter(filterIndex) {

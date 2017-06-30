@@ -1,15 +1,15 @@
 export const FILTERS = [
     {
-        name: '上线准备',
-        label: '上线准备'
+        name: '散标投资',
+        label: '散标投资'
     },
 
     {
-        name: '付款中',
-        label: '付款中'
+        name: '灵汇金',
+        label: '灵汇金'
     },
     {
-        name: '众筹失败',
-        label: '众筹失败'
+        name: '债权转让',
+        label: '债权转让'
     }
 ]

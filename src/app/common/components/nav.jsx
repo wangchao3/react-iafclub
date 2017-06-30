@@ -48,12 +48,12 @@ export default React.createClass({
 
     render: function(){
         const path = location.pathname;
-        if(path === '/' || this.props.routeName === '/welcome/landing'){
+        if(path === '/'){
             return (
-                <a className="iconfont nav-icon" onClick={this.goHome}>&#xe60a;</a>
+                <span />
             );
         }else{
-            return <a href="#" className="iconfont nav-icon" onClick={this.backAction}>&#xe609;</a>
+            return <a href="#" className="iconfont nav-icon" onClick={this.backAction}>&#xe609;<span>返回</span></a>
         }
     }
 

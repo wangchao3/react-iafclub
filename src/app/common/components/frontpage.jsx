@@ -1,5 +1,5 @@
 import React from 'react'
-import HeaderActions from '../../common/actions/header'
+import HeaderActions from '../actions/header'
 import {Link} from 'react-router'
 import FrontpageActions from '../actions/frontpage'
 import FrontpageStore from '../stores/frontpage'
@@ -8,6 +8,7 @@ import alt from '../../alt'
 import styles from '../styles/frontpage'
 import Carousel from "../../../components/carousel"
 import Footer from '../../../components/footer'
+import Header from './header'
 
 const Linkarray = (props) =>{
     const svgData = {
@@ -63,6 +64,7 @@ export default React.createClass({
         });
         return(
             <div className="frontpage">
+            <Header ref="header" />
                 <Carousel className="index-slide">
                     {slidesNode}
                 </Carousel>
