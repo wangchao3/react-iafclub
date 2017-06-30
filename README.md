@@ -50,7 +50,7 @@
         server_name mdev.iafclub.com;
 
         location /api {
-            proxy_pass http://mdapi.yunchou.com:88;
+            proxy_pass 后端提供的地址;
         }
 
         location /sockjs-node {
