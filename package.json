@@ -5,20 +5,20 @@
   "main": "app.jsx",
   "scripts": {
     "test": "",
-    "start": "node server.js --v dev --progress",
+    "start": "node server.js --v dev",
     "publish": "node build.js production",
     "build": "node build.js test"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ggitt/webapp.git"
+    "url": "git+https://github.com/wangchao3/react-iafclub.git"
   },
   "author": "",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ggitt/webapp/issues"
+    "url": "https://github.com/wangchao3/react-iafclub/issues"
   },
-  "homepage": "https://github.com/ggitt/webapp#readme",
+  "homepage": "https://github.com/wangchao3/react-iafclub#readme",
   "dependencies": {
     "alt": "^0.18.5",
     "axios": "^0.12.0",

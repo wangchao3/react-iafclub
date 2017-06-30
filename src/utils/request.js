@@ -7,7 +7,7 @@ import {errorHandle} from '../app/common/services/error';
 const jwt = Cookies.get("jwt") || "";
 
 const config = {
-    baseURL: "/api/",
+    baseURL: "",
     timeout: 1000 * 60 * 5,
     headers: {
         "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8"

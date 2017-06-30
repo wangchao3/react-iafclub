@@ -3,7 +3,7 @@ import styles from './styles/footer'
 import {Link} from 'react-router'
 
 export default React.createClass({
-    
+
     propTypes: {
         name: React.PropTypes.string.isRequired,
     },
@@ -27,7 +27,6 @@ export default React.createClass({
             default:
                 data.frontpage = "frontpage";
             }
-            console.log(data);
         return (
             <dl className="container footer_container">
                 <dt><Link to="/" className={data.frontpage ? 'active' : ''}><span className="iconfont">&#xe607;</span><span>首页</span></Link></dt>
