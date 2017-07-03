@@ -8,6 +8,7 @@ import FixedBar from '../../../components/fixedBar'
 import Spinner from '../../../components/spinner'
 import styles from '../styles/list'
 import {textLimit} from '../../../utils/utils'
+import Footer from '../../../components/footer'
 
 const Product = (props)=>{
     const product = props.product;
@@ -90,6 +91,7 @@ export default React.createClass({
                         </div>
                     </FixedBar>
                     {productNode}
+                    <Footer name="list"/>
                 </div>
             );
         }

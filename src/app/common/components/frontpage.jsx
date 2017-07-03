@@ -64,7 +64,7 @@ export default React.createClass({
         });
         return(
             <div className="frontpage">
-            <Header ref="header" />
+                <Header ref="header" />
                 <Carousel className="index-slide">
                     {slidesNode}
                 </Carousel>
