@@ -4,6 +4,7 @@ import ListActions from '../actions/list'
 import url from '../constants/url'
 import {FILTERS} from '../constants/index'
 import {errorHandle} from '../../common/services/error'
+import axios from "axios";
 
 class ListStore {
     constructor() {
@@ -22,12 +23,20 @@ class ListStore {
         this.products = null;
         let filter = this.filters[this.filterIndex].name
         // fetch products API
+
+
+        axios.get('/jrrest/investments')
+            .then(function (response) {
+                console.log(response);
+            })
+
     }
 
     changeFilter(filterIndex) {
         if(this.filterIndex === filterIndex) return false;
         this.filterIndex = filterIndex;
         this.handleFetchProducts();
+
     }
 }
 
