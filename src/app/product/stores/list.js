@@ -2,9 +2,8 @@ import alt from '../../alt'
 import {request} from '../../../utils/request'
 import ListActions from '../actions/list'
 import url from '../constants/url'
-import {FILTERS} from '../constants/index'
+import {FILTERS} from '../constants/list'
 import {errorHandle} from '../../common/services/error'
-import axios from "axios";
 
 class ListStore {
     constructor() {
@@ -21,22 +20,25 @@ class ListStore {
 
     handleFetchProducts() {
         this.products = null;
-        let filter = this.filters[this.filterIndex].name
-        // fetch products API
-
-
-        axios.get('/jrrest/investments')
-            .then(function (response) {
-                console.log(response);
-            })
-
+        let productListApi = this.filters[this.filterIndex].url;
+        request
+        .get(productListApi)
+        .then((res) => {
+            const data = res.data;
+            if(data.responseCode !== '00') return false;
+            if(this.filterIndex == '2') {
+                this.products = data.content.assignmentList;
+            }else {
+                this.products = data.content.array;
+            }
+            this.emitChange();
+        })
     }
 
     changeFilter(filterIndex) {
         if(this.filterIndex === filterIndex) return false;
         this.filterIndex = filterIndex;
         this.handleFetchProducts();
-
     }
 }
 

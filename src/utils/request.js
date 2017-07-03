@@ -28,10 +28,9 @@ jsonConfig.transformRequest = [function(data) {
 
 const responseInterceptors = {
     success: function(response) {
-        console.log(response);
-        // if(response.data.error && response.data.error !== "NA") {
-        //     return Promise.reject(response.data.message);
-        // }
+        if(response.data.responseCode && response.data.responseCode !== "00") {
+            return Promise.reject(response.data.responseMessage);
+        }
         return response
     },
     fail: function(error) {
