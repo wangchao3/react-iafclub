@@ -1,5 +1,5 @@
-import {BASE_API_PATH} from '../../constants'
+import {BASE_API_PATH_HTML} from '../../constants'
 
 export default {
-    banner: 'html/mobile_banner/show/index.html',
+    banner: BASE_API_PATH_HTML + 'mobile_banner/show/index.html',
 }

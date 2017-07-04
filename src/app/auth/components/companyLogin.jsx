@@ -5,7 +5,7 @@ import HeaderActions from '../../common/actions/header'
 import {Link} from 'react-router'
 import alt from '../../alt'
 import Header from '../../common/components/header'
-import styles from '../styles/phoneCheck'
+import styles from '../styles/auth'
 import Form from "../../../components/form/form";
 
 export default React.createClass({

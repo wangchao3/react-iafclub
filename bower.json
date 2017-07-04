@@ -1,14 +1,14 @@
 {
   "name": "webapp",
   "version": "1.0.0",
-  "homepage": "https://github.com/ggitt/webapp",
-  "description": "webapp for yunchou.com",
-  "main": "app.coffee",
+  "homepage": "https://github.com/wangchao3/react-iafclub#readme",
+  "description": "webapp for iafclub.com",
+  "main": "app.js",
   "moduleType": [
     "node"
   ],
   "authors": [
-    "Hounse"
+    "Wangchao"
   ],
   "license": "MIT",
   "ignore": [
@@ -23,6 +23,5 @@
     "ratchet": "~2.0.2",
     "sockjs": "0.3.4",
     "stomp-websocket": "2.3.4",
-    "bootstrap": "3"
   }
 }

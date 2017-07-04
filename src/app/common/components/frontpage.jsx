@@ -34,6 +34,7 @@ export default React.createClass({
     componentDidMount: function() {
         FrontpageStore.listen(this.onChange);
         HeaderActions.setTitle('精融汇');
+        FrontpageActions.getBanner();
     },
 
     componentWillUnmount: function() {
@@ -62,6 +63,7 @@ export default React.createClass({
                 <a href={slide.url} key={index}><img src={slide.image} /></a>
             );
         });
+
         return(
             <div className="frontpage">
                 <Header ref="header" />

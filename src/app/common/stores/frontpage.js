@@ -18,8 +18,9 @@ class FrontpageStore {
     //     request
     //         .get(url.banner)
     //         .then((res) => {
-    //             this.banners = res.data.data;
-    //             this.emitChange();
+    //             console.log(res);
+                // this.banners = res.data.data;
+                // this.emitChange();
     //         });
     // }
 }
