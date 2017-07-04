@@ -21,10 +21,9 @@ class PhoneCheckStore {
         .then((res) => {
             const data = res.data;
             if(data.responseCode === '422.user.exists') {
-                console.log(referer);
                 location.href = '/auth/password'+referer;
             }else {
-
+                location.href = '/auth/sms_notification'+referer;
             }
             this.emitChange();
         })
