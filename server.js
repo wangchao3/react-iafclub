@@ -63,14 +63,17 @@ app.get('/hello', function(req, res){
 
 
 app.get('*', function(req, res){
-    fetchUserData(req.cookies.jwt, env).then((response)=>{
-        var data = response.data;
-        if(data.error !== "NA" || !data.data || !data.data.userId) return res.render(path.join(__dirname, "index.html"));
-        return res.render(path.join(__dirname, "index.html"), {user: data.data})
-    }, (error) => {
-        res.render(path.join(__dirname, "index.html"))
-    })
-
+    // console.log(req.cookies, env);
+    // fetchUserData(req.cookies.jwt, req.cookies.userId, env).then((response)=>{
+    //     var data = response.data;
+    //     console.log(data);
+    //     if(data.responseCode !== "00" || !data.content) return res.render(path.join(__dirname, "index.html"));
+    //     console.log(data.content);
+    //     return res.render(path.join(__dirname, "index.html"), {user: data.content})
+    // }, (error) => {
+    //     res.render(path.join(__dirname, "index.html"))
+    // })
+    res.render(path.join(__dirname, "index.html"))
 })
 
 var server = app.listen(port, function(){
@@ -79,14 +82,16 @@ var server = app.listen(port, function(){
 
 if(env === "dev") build("dev");
 
-function fetchUserData(jwt, env) {
-    var url = "https://m.yunchou.com/api/user/getUserIdentityInfo";
-    if(env === "dev") url =  "http://mdev.yunchou.com/api/user/getUserIdentityInfo";
-    if(env === "preview") url = "http://m-preview.yunchou.com/api/user/getUserIdentityInfo";
+function fetchUserData(jwt, userId, env) {
     if(!jwt) return Promise.reject("jwt required");
-    return axios.post(url, qs.stringify({jwt: jwt}), {
+    var url = 'http://mdev.iafclub.com/jrrest/members/'+userId;
+    if(env === "dev") url = 'http://mdev.iafclub.com/jrrest/members/'+userId;
+    if(env === "preview") url = 'http://m.iafclub.com/jrrest/members/'+userId;
+    console.log(url);
+    return axios.get(url, {
         headers: {
             "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+            "Token": jwt,
         },
         responseType: "json",
     })

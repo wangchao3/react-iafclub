@@ -28,6 +28,7 @@ export default React.createClass({
     },
 
     render: function(){
+        const companyLoginUrl = `/auth/company_login${location.search}`;
         const dataset = {
             mobilePhone: {
                 type: "text",
@@ -52,7 +53,7 @@ export default React.createClass({
                         <button className="btn btn-red btn-block btn-radius" type="submit">下一步</button>
                     </div>
                     <div className="companyLogin">
-                        <p className="text-center"><Link to="/auth/company_login">企业登录</Link></p>
+                        <p className="text-center"><Link to={companyLoginUrl}>企业登录</Link></p>
                     </div>
                 </form>
             </div>

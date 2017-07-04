@@ -1,15 +1,14 @@
 import alt from '../../alt'
 import PasswordActions from '../actions/password'
-import {request} from '../../../utils/request'
+import {jsonRequest, request} from '../../../utils/request'
 import url from '../constants/url'
 import {errorHandle} from '../../common/services/error'
-import {getJWT, auth} from '../../common/services/authentication'
+import {auth, authUserId} from '../../common/services/authentication'
 import {getAuthDataFromLocal} from '../services/mobile';
 
 class PasswordStore {
 
     constructor() {
-        this.jwt = null;
         this.mobilePhone = null;
         this.bindActions(PasswordActions);
     }
@@ -24,7 +23,18 @@ class PasswordStore {
 
     onLogin(payload) {
         console.log(payload);
-        // check mobilePhone is register or not API
+        payload.phone = this.mobilePhone;
+        jsonRequest
+        .post(url.login, payload)
+        .then((res) => {
+            if(res.data.responseCode === '00') {
+                auth(res.data.content.token);
+                authUserId(res.data.content.userId);
+            }
+            this.emitChange();
+        }).catch((error) => {
+            return alert('提交失败');
+        })
     }
 
 }

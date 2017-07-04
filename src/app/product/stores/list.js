@@ -4,6 +4,7 @@ import ListActions from '../actions/list'
 import url from '../constants/url'
 import {FILTERS} from '../constants/list'
 import {errorHandle} from '../../common/services/error'
+import Cookies from "js-cookie";
 
 class ListStore {
     constructor() {
@@ -19,6 +20,7 @@ class ListStore {
     }
 
     handleFetchProducts() {
+        const userId = Cookies.get("userId") || "";
         this.products = null;
         let productListApi = this.filters[this.filterIndex].url;
         request
@@ -32,6 +34,14 @@ class ListStore {
                 this.products = data.content.array;
             }
             this.emitChange();
+        })
+
+        request
+        .get('/jrrest/members/'+userId)
+        .then((res) => {
+            console.log(res);
+        }).catch((error) => {
+            return alert('提交失败');
         })
     }
 

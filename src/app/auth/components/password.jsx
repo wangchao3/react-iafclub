@@ -62,6 +62,6 @@ export default React.createClass({
         e.preventDefault();
         const data = this.refs.form.getValue();
         if(data.isInvalid) return undefined;
-        PasswordActions.check(data.value);
+        PasswordActions.login(data.value);
     }
 })

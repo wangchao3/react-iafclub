@@ -28,6 +28,7 @@ export default React.createClass({
     },
 
     render: function(){
+        const personLoginUrl = `/auth/phone_check${location.search}`;
         const dataset = {
             name: {
                 type: "text",
@@ -57,7 +58,7 @@ export default React.createClass({
                         <button className="btn btn-red btn-block btn-radius" type="submit">下一步</button>
                     </div>
                     <div className="userLogin">
-                        <p className="text-center"><Link to="/auth/phone_check">个人登录</Link></p>
+                        <p className="text-center"><Link to={personLoginUrl}>个人登录</Link></p>
                     </div>
                 </form>
             </div>

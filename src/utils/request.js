@@ -18,7 +18,7 @@ const config = {
     responseType: "json"
 }
 
-if(jwt) config.headers.jwt = jwt;
+if(jwt) config.headers.Token = jwt;
 
 let jsonConfig = JSON.parse(JSON.stringify(config));
 jsonConfig.headers["Content-Type"] = "application/json; charset=UTF-8";

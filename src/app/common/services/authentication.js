@@ -8,7 +8,9 @@ import qs from "qs";
 let user = null;
 
 export function isLogin(){
-    return !!YC.current_user;
+    const token = Cookies.set("jwt") || "";
+    return !!token;
+    // return !!YC.current_user;
 }
 
 export function getUser(){
@@ -22,6 +24,11 @@ export function getJWT(){
     const token = Cookies.set("jwt") || "";
     if(!token) return null;
     return token;
+}
+
+export function authUserId(token ,refresh){
+    Cookies.set("userId", token, {expires: 365 * 5});
+    if(refresh) location.reload();
 }
 
 export function auth(token, refresh){
@@ -39,30 +46,6 @@ export function loginRequired(next, replace) {
     if(isWechat()) return checkWechatAuth();
     let referer = location.href;
     const path = location.pathname;
-    if(path === '/login' || path === '/register') referr = location.protocol + '//' + location.hostname + '/home';
-    replace({pathname: '/login', query: {referer: encodeURIComponent(referer)}});
+    if(path === '/auth/phone_check' || path === '/register') referr = location.protocol + '//' + location.hostname + '/home';
+    replace({pathname: '/auth/phone_check', query: {referer: encodeURIComponent(referer)}});
 }
-
-// function parseJWTFromLocal(){
-//     const token = localStorage['jwt'];
-//     if(!token) return false;
-//     try{
-//         return jwt.decode(token, null, 'RS256');
-//     }catch(e){
-//         localStorage['jwt'] = '';
-//         throw new Error(e);
-//     }
-// }
-//
-// function getUserInfoRequest() {
-//     return new Promise((resolve, reject)=> {
-//         const jwt = localStorage["jwt"];
-//         if(!jwt) return reject(403);
-//         request.post("user/getUserIdentityInfo", {jwt: jwt}).then((response)=> {
-//             const data = response.data;
-//             if(!data.identityInfo || !data.identityInfo.userId) return reject(data.message);
-//             user = data.identityInfo;
-//             resolve(data.identityInfo);
-//         }, reject)
-//     })
-// }
