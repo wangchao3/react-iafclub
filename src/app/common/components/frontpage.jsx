@@ -71,6 +71,7 @@ export default React.createClass({
                     {slidesNode}
                 </Carousel>
                 <Linkarray />
+                <Link to="/auth/phone_check" className="btn btn-block">登录/注册</Link>
                 <Footer name="frontpage"/>
             </div>
         );
