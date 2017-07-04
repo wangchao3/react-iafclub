@@ -3,12 +3,10 @@ import CompanyLoginActions from '../actions/companyLogin'
 import {request} from '../../../utils/request'
 import url from '../constants/url'
 import {errorHandle} from '../../common/services/error'
-import {getJWT, auth} from '../../common/services/authentication'
 
 class CompanyLoginStore {
 
     constructor() {
-        this.jwt = null;
         this.bindActions(CompanyLoginActions);
     }
 

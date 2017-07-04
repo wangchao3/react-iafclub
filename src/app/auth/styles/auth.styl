@@ -1,4 +1,26 @@
 .auth
+    .relative
+        position relative
+        &>img
+            position absolute
+            right 5px
+            top 97px
+            z-index 100
+        .btn-outline
+            background-color #fff
+            color #72b8d7
+            font-size 12px
+            border-width 1px
+            border-color #72b8d7
+            border-style solid
+            border-radius 17px
+            position absolute
+            right 5px
+            top 145px
+            z-index 100
+            &:active
+                background-color #72b8d7
+                color #fff
     .logo
         text-align center
         padding 24px
@@ -7,6 +29,8 @@
     .text-nav
         color #96999F
         font-size 16px
+        &>p
+            font-size 16px
     .text-comment
         color #CACCCF
     .p16
