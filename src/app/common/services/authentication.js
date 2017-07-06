@@ -8,9 +8,8 @@ import qs from "qs";
 let user = null;
 
 export function isLogin(){
-    const token = Cookies.set("jwt") || "";
-    return !!token;
-    // return !!YC.current_user;
+    const token = Cookies.get("hasLogin") || false;
+    return token;
 }
 
 export function getUser(){
@@ -31,6 +30,11 @@ export function authUserId(token ,refresh){
     if(refresh) location.reload();
 }
 
+export function hasLogin(token ,refresh){
+    Cookies.set("hasLogin", token, {expires: 365 * 5});
+    if(refresh) location.reload();
+}
+
 export function auth(token, refresh){
     Cookies.set("jwt", token, {expires: 365 * 5});
     if(refresh) location.reload();
@@ -48,4 +52,9 @@ export function loginRequired(next, replace) {
     const path = location.pathname;
     if(path === '/auth/phone_check' || path === '/register') referr = location.protocol + '//' + location.hostname + '/home';
     replace({pathname: '/auth/phone_check', query: {referer: encodeURIComponent(referer)}});
+}
+
+export function unLoginRequired(next, replace) {
+    if(!isLogin()) return undefined;
+    replace({pathname: '/'});
 }

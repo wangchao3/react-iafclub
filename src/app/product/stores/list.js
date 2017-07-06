@@ -6,6 +6,7 @@ import {FILTERS} from '../constants/list'
 import {errorHandle} from '../../common/services/error'
 import Cookies from "js-cookie";
 
+
 class ListStore {
     constructor() {
         this.products = null;
@@ -43,6 +44,7 @@ class ListStore {
         }).catch((error) => {
             return alert('提交失败');
         })
+
     }
 
     changeFilter(filterIndex) {

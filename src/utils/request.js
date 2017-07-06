@@ -15,7 +15,7 @@ const config = {
     transformRequest: [function(data) {
         return qs.stringify(data)
     }],
-    responseType: "json"
+    // responseType: "json"
 }
 
 if(jwt) config.headers.Token = jwt;

@@ -46,21 +46,11 @@ export default React.createClass({
     },
 
     render: function(){
-        const banners = [
-            {
-                image: "https://m.iafclub.com/uploadfile/2017/0527/20170527104018789.jpg",
-                message: "first banner",
-                url: "https://m.iafclub.com/mobile-theme/2017_invite/index.html",
-            },
-            {
-                image: "https://m.iafclub.com/uploadfile/2017/0519/20170519045136927.jpg",
-                message: "second banner",
-                url: "https://m.iafclub.com/#/notice/show/1457",
-            }
-        ]
+        const banners = this.state.banners;
+        if(!banners) return (<Spinner />);
         const slidesNode = banners.map((slide, index) => {
             return (
-                <a href={slide.url} key={index}><img src={slide.image} /></a>
+                <a href={slide.link} key={index}><img src={slide.image} /></a>
             );
         });
 
@@ -70,8 +60,10 @@ export default React.createClass({
                 <Carousel className="index-slide">
                     {slidesNode}
                 </Carousel>
-                <Linkarray />
-                <Link to="/auth/phone_check" className="btn btn-block">登录/注册</Link>
+                <div className="body-content">
+                    <Linkarray />
+                    <Link to="/auth/phone_check" className="btn btn-block">登录/注册</Link>
+                </div>
                 <Footer name="frontpage"/>
             </div>
         );

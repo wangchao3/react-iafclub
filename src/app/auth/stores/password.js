@@ -3,8 +3,9 @@ import PasswordActions from '../actions/password'
 import {jsonRequest, request} from '../../../utils/request'
 import url from '../constants/url'
 import {errorHandle} from '../../common/services/error'
-import {auth, authUserId} from '../../common/services/authentication'
+import {hasLogin, authUserId, auth} from '../../common/services/authentication'
 import {getAuthDataFromLocal} from '../services/mobile';
+import {getRefererr} from '../../../app/common/services/app';
 
 class PasswordStore {
 
@@ -22,18 +23,25 @@ class PasswordStore {
     }
 
     onLogin(payload) {
-        console.log(payload);
         payload.phone = this.mobilePhone;
+        const backUrl = getRefererr();
+        console.log(backUrl);
         jsonRequest
         .post(url.login, payload)
         .then((res) => {
             if(res.data.responseCode === '00') {
-                auth(res.data.content.token);
                 authUserId(res.data.content.userId);
+                auth(res.data.content.token);
+                hasLogin(true);
+                if(!backUrl) {
+                    window.location.href = '/';
+                }else {
+                    window.location.replace(decodeURIComponent(backUrl.referer));
+                }
             }
             this.emitChange();
         }).catch((error) => {
-            return alert('提交失败');
+            return alert(error);
         })
     }
 

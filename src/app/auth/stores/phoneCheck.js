@@ -13,17 +13,16 @@ class PhoneCheckStore {
 
     onCheck(payload) {
         let timestamp = new Date().getTime();
-        const referer = location.search;
         if(!payload) return false;
         saveAuthDataToLocal('followOrgAuthData', payload);
         request
         .get('/jrrest/users/'+payload.mobilePhone+'?'+timestamp)
         .then((res) => {
             const data = res.data;
-            if(data.responseCode === '422.user.exists') {
-                location.href = '/auth/password'+referer;
+            if(data.responseCode === '00') {
+                location.href = '/auth/sms_notification';
             }else {
-                location.href = '/auth/sms_notification'+referer;
+                location.href = '/auth/password';
             }
             this.emitChange();
         })

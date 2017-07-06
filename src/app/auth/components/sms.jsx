@@ -8,6 +8,10 @@ import Header from '../../common/components/header'
 import styles from '../styles/auth'
 import Form from "../../../components/form/form";
 import Spinner from '../../../components/spinner'
+import Input from "../../../components/form/text";
+import validator from '../../../utils/validator';
+import {getRefererr} from '../../common/services/app';
+import objectAssign from 'object-assign';
 
 export default React.createClass({
 
@@ -39,6 +43,7 @@ export default React.createClass({
                 isRequired: true,
                 placeholder: "请输入图片验证码",
                 label: "图片验证码",
+                ref: "imgCode"
             },
             smsCode: {
                 type: "text",
@@ -57,9 +62,28 @@ export default React.createClass({
                 </div>
                 <form className="form relative" onSubmit={this.onSubmit}>
                     <div className="item text-nav p16 text-center">点击可获取验证码并发送到<p>{this.state.mobilePhone}</p></div>
-                    <Form dataset={dataset} ref="form" />
-                    <img src={imgSrc} onClick={this.refresh} />
-                    <button className="btn btn-outline" onClick={this.sendSms}>获取验证码</button>
+                    <div className="input-group">
+                        <Input
+                            ref="imgCode"
+                            name="imgCode"
+                            placeholder="请填写图片验证码"
+                            onValid={validator.validateSmsCode}
+                            label="图片验证码"
+                            isRequired={true}
+                        />
+                        <img src={imgSrc} onClick={this.refresh} />
+                    </div>
+                    <div className="input-group">
+                        <Input
+                            ref="verificationCode"
+                            name="verificationCode"
+                            placeholder="请填写短信验证码"
+                            onValid={validator.validateSmsCode}
+                            label="短信验证码"
+                            isRequired={true}
+                        />
+                        <span className="btn btn-positive" onClick={this.sendSms}>获取验证码</span>
+                    </div>
                     <div className="p16">
                         <button className="btn btn-red btn-block btn-radius" type="submit">下一步</button>
                     </div>
@@ -70,9 +94,22 @@ export default React.createClass({
 
     onSubmit: function(e){
         e.preventDefault();
-        const data = this.refs.form.getValue();
-        if(data.isInvalid) return undefined;
-        SmsActions.check(data.value);
+        var value = {
+            imgCode: this.refs.imgCode.getValue(),
+            verificationCode: this.refs.verificationCode.getValue(),
+        };
+        let isValid = true;
+        for(var i in value){
+            if(!value[i]) isValid = false;
+        };
+        if(!isValid) return undefined;
+        const refererr = getRefererr();
+        console.log(refererr);
+        let data = JSON.parse(JSON.stringify(value))
+        if(refererr){
+            data = objectAssign(data, refererr);
+        }
+        SmsActions.login(data);
     },
 
     refresh: function(e){
@@ -82,6 +119,7 @@ export default React.createClass({
 
     sendSms: function(e){
         e.preventDefault();
-        SmsActions.sendMessage();
+        if(!this.refs.imgCode.getValue()) return undefined;
+        SmsActions.sendMessage(this.refs.imgCode.getValue());
     }
 })
