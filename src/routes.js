@@ -5,6 +5,7 @@ import NotFound from "./app/pages/components/404";
 import indexRoute from "./app/common/routes";
 import productRoute from "./app/product/routes";
 import authRoute from './app/auth/routes';
+import myRoute from './app/my/routes';
 
 export default {
     component: "div",
@@ -26,6 +27,7 @@ export default {
             childRoutes: [
                 productRoute,
                 authRoute,
+                myRoute,
             ]
         },
         {

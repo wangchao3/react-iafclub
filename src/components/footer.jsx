@@ -1,6 +1,7 @@
 import React from 'react'
 import styles from './styles/footer'
 import {Link} from 'react-router'
+import {isLogin} from "../app/common/services/authentication";
 
 export default React.createClass({
 
@@ -27,9 +28,16 @@ export default React.createClass({
             default:
                 data.frontpage = "frontpage";
             }
+        let firstItem;
+        if (isLogin) {
+            firstItem = '推荐';
+        }else {
+            firstItem = '首页';
+        }
+
         return (
             <dl className="container footer_container">
-                <dt><Link to="/" className={data.frontpage ? 'active' : ''}><span className="iconfont">&#xe607;</span><span>首页</span></Link></dt>
+                <dt><Link to="/" className={data.frontpage ? 'active' : ''}><span className="iconfont">&#xe607;</span><span>{firstItem}</span></Link></dt>
                 <dt><Link to="/product/list" className={data.list ? 'active' : ''}><span className="iconfont">&#xe629;</span><span>投资</span></Link></dt>
                 <dt><Link to="/product/insurance" className={data.insurance ? 'active' : ''}><span className="iconfont">&#xe692;</span><span>保险</span></Link></dt>
                 <dt><Link to="/my/home" className={data.home ? 'active' : ''}><span className="iconfont">&#xe67d;</span><span>账户</span></Link></dt>

@@ -4,7 +4,6 @@ import IndexActions from '../actions/index'
 import url from '../constants/url'
 import {FILTERS} from '../constants/index'
 import {errorHandle} from '../../common/services/error'
-import {getUser} from '../../common/services/authentication'
 
 class IndexStore {
     constructor() {

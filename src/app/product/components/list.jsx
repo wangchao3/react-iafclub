@@ -54,6 +54,7 @@ export default React.createClass({
 
     componentWillUnmount: function(){
         ListStore.unlisten(this.onChange);
+        alt.recycle(ListStore);
     },
 
     onChange: function(state){

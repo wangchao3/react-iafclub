@@ -48,7 +48,7 @@ export default React.createClass({
 
     render: function(){
         const path = location.pathname;
-        if(path === '/'){
+        if(path === '/' || path === '/my/home'){
             return (
                 <span />
             );

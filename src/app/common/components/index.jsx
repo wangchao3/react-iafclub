@@ -22,6 +22,7 @@ export default React.createClass({
 
     componentWillUnmount: function(){
         IndexStore.unlisten(this.onChange);
+        alt.recycle(IndexStore);
     },
 
     onChange: function(state){
