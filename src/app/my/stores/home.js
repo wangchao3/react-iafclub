@@ -1,7 +1,6 @@
 import alt from '../../alt'
 import HomeActions from '../actions/home'
 import {request} from '../../../utils/request'
-import {errorHandle} from '../../common/services/error'
 import Cookies from "js-cookie";
 
 class HomeStore {
@@ -20,7 +19,7 @@ class HomeStore {
             if (res.data.responseCode === "00") {
                 this.userInfo = res.data.content;
             }else {
-                alert(res.data.responseMessage);
+                Cookies.set("hasLogin", "", {expires: -1});
             }
             this.emitChange();
         }).catch((error) => {

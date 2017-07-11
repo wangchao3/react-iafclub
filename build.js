@@ -70,8 +70,8 @@ function startDevServer(devOpt){
         stats: { colors: true },
         historyApiFallback: true
     });
-    server.listen(6565, "127.0.0.1");
-    console.log("dev server start on port 6565");
+    server.listen(7575, "127.0.0.1");
+    console.log("dev server start on port 7575");
 }
 
 if(require.main === module) build(env);

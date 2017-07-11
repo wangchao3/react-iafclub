@@ -58,14 +58,14 @@
         }
 
         location /sockjs-node {
-            proxy_pass http://127.0.0.1:5555;
+            proxy_pass http://127.0.0.1:7575;
             proxy_http_version 1.1;
             proxy_set_header Upgrade $http_upgrade;
             proxy_set_header Connection "upgrade";
         }
 
         location / {
-            proxy_pass http://127.0.0.1:5555;
+            proxy_pass http://127.0.0.1:3333;
         }
     }
 

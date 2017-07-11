@@ -26,7 +26,7 @@ switch(env){
     break;
     //其它...
     default:
-        port = 5555;
+        port = 3333;
 }
 
 var wechat = require('./server/wechat');

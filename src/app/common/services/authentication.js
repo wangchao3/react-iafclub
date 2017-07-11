@@ -9,6 +9,7 @@ let user = null;
 
 export function isLogin(){
     const token = Cookies.get("hasLogin") || false;
+    console.log(token);
     return token;
 }
 
@@ -55,6 +56,8 @@ export function loginRequired(next, replace) {
 }
 
 export function unLoginRequired(next, replace) {
+    const token = Cookies.get("hasLogin") || false;
+    if(token === 'false') console.log(token);
     if(!isLogin()) return undefined;
     replace({pathname: '/'});
 }
