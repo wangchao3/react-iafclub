@@ -1,18 +1,19 @@
-export function saveAuthDataToLocal(key, data) {
-    if(!data) return false;
+export function saveUserInfoToLocal(key, data) {
+    if (!data)
+        return false;
     try {
         localStorage.setItem(key, JSON.stringify(data));
-    } catch(e) {
+    } catch (e) {
         window.authentication = {}
         window.authentication[key] = data;
     };
 }
 
-export function getAuthDataFromLocal(key) {
+export function getUserInfoFromLocal(key) {
     let data = localStorage.getItem(key);
-    if(!data) {
+    if (!data) {
         data = window.authentication && window.authentication[key];
-    }else{
+    } else {
         data = JSON.parse(data);
     }
     return data;

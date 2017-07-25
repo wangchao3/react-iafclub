@@ -1,5 +1,7 @@
-import {BASE_API_PATH_IAF} from '../../constants'
+import {BASE_API_PATH} from '../../constants'
 
 export default {
-    login: BASE_API_PATH_IAF + '/users/login',
+    personLogin : BASE_API_PATH + '/login/doin',
+    sendSms : BASE_API_PATH + '/reg/sendsms',
+    register : BASE_API_PATH + '/reg/beuser'
 }

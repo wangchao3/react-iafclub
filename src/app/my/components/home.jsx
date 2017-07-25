@@ -17,7 +17,7 @@ export default React.createClass({
 
     componentDidMount: function() {
         HomeStore.listen(this.onChange);
-        HeaderActions.setTitle('账户');
+        HeaderActions.setTitle('我的');
         HomeActions.init();
     },
 
@@ -25,33 +25,21 @@ export default React.createClass({
         HomeStore.unlisten(this.onChange);
     },
 
-    onChange: function(state){
+    onChange: function(state) {
         this.setState(state);
     },
 
-    render: function(){
-        const isActive = this.state.isActive;
-        const userInfo = this.state.userInfo;
-        if(!userInfo) return (<Spinner />);
-        return(
+    render: function() {
+        return (
             <div className="home">
-                <Header ref="header" />
-                <div className="body-content">
-                    <ul className="table-view">
-                        <li className="table-view-cell">
-                            {isActive ? userInfo.realName : '你猜猜我的名字'}
-                            <div className={cx("toggle", cx({'active': isActive}))} onClick={() => this.toggleActive(isActive)}>
-                                <div className="toggle-handle"></div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
+                <Header ref="header"/>
+
                 <Footer name="home"/>
             </div>
         );
     },
 
-    toggleActive: function(data){
+    toggleActive: function(data) {
         HomeActions.toggleClass(data);
     }
 })

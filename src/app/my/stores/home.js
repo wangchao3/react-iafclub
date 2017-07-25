@@ -12,19 +12,19 @@ class HomeStore {
     }
 
     onInit(payload) {
-        const userId = Cookies.get("userId") || "";
-        request
-        .get('/jrrest/members/'+userId)
-        .then((res) => {
-            if (res.data.responseCode === "00") {
-                this.userInfo = res.data.content;
-            }else {
-                Cookies.set("hasLogin", "", {expires: -1});
-            }
-            this.emitChange();
-        }).catch((error) => {
-            return alert(error);
-        })
+        // const userId = Cookies.get("userId") || "";
+        // request
+        // .get('/jrrest/members/'+userId)
+        // .then((res) => {
+        //     if (res.data.responseCode === "00") {
+        //         this.userInfo = res.data.content;
+        //     }else {
+        //         Cookies.set("hasLogin", "", {expires: -1});
+        //     }
+        //     this.emitChange();
+        // }).catch((error) => {
+        //     return alert(error);
+        // })
     }
 
     toggleClass(status) {

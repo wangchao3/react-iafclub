@@ -6,24 +6,7 @@ import FrontpageStore from '../stores/frontpage'
 import Spinner from '../../../components/spinner'
 import alt from '../../alt'
 import styles from '../styles/frontpage'
-import Carousel from "../../../components/carousel"
-import Footer from '../../../components/footer'
 import Header from './header'
-
-const Linkarray = (props) =>{
-    const svgData = {
-        img1: '<svg class="icon" aria-hidden="true"><use xlink:href="#icon-home-holding"></use></svg>',
-        img2: '<svg class="icon" aria-hidden="true"><use xlink:href="#icon-home-safety"></use></svg>',
-        img3: '<svg class="icon" aria-hidden="true"><use xlink:href="#icon-home-trusteeship"></use></svg>',
-    }
-    return (
-        <ul className="link-array">
-            <li><svg dangerouslySetInnerHTML={{__html: svgData.img1 }} /><div>上市公司控股</div></li>
-            <li><svg dangerouslySetInnerHTML={{__html: svgData.img2 }} /><div>保险本息保障</div></li>
-            <li><svg dangerouslySetInnerHTML={{__html: svgData.img3 }} /><div>新浪资金托管</div></li>
-        </ul>
-    );
-}
 
 export default React.createClass({
 
@@ -33,39 +16,26 @@ export default React.createClass({
 
     componentDidMount: function() {
         FrontpageStore.listen(this.onChange);
-        HeaderActions.setTitle('精融汇');
-        FrontpageActions.getBanner();
+        HeaderActions.setTitle('首页');
     },
 
     componentWillUnmount: function() {
         FrontpageStore.unlisten(this.onChange);
     },
 
-    onChange: function(state){
+    onChange: function(state) {
         this.setState(state);
     },
 
-    render: function(){
-        const banners = this.state.banners;
-        if(!banners) return (<Spinner />);
-        const slidesNode = banners.map((slide, index) => {
-            return (
-                <a href={slide.link} key={index}><img src={slide.image} /></a>
-            );
-        });
+    render: function() {
 
-        return(
-            <div className="frontpage">
-                <Header ref="header" />
-                <Carousel className="index-slide">
-                    {slidesNode}
-                </Carousel>
-                <div className="body-content">
-                    <Linkarray />
-                    <Link to="/auth/phone_check" className="btn btn-block">登录/注册</Link>
-                </div>
-                <Footer name="frontpage"/>
+        return (
+            <div className="frontpage text-center">
+                <img className="logo" src="/assets/images/index/login.png"/>
+                <Link className="btn btn-block btn-outlined color-red border-red" to={`/login/20`}>企业用户</Link>
+                <Link className="btn btn-block btn-red" to={`/user/login?type=10`}>个人用户</Link>
+                <p className="size12 fixBottom">Copyright ©2017-2018 特华小贷保留所有权利</p>
             </div>
         );
-    },
+    }
 })

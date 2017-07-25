@@ -6,41 +6,52 @@ import {isLogin} from "../app/common/services/authentication";
 export default React.createClass({
 
     propTypes: {
-        name: React.PropTypes.string.isRequired,
+        name: React.PropTypes.string.isRequired
     },
 
-    render: function(){
+    render: function() {
         const comeFrom = this.props.name;
         let data = {};
-        switch(comeFrom){
-            case "frontpage":
-                data.frontpage = "frontpage";
+        switch (comeFrom) {
+            case "borrow":
+                data.borrow = "borrow";
                 break;
-            case "list":
-                data.list = "list";
-                break;
-            case "insurance":
-                data.insurance = "insurance";
+            case "repay":
+                data.repay = "repay";
                 break;
             case "home":
                 data.home = "home";
                 break;
             default:
-                data.frontpage = "frontpage";
-            }
-        let firstItem;
-        if (isLogin) {
-            firstItem = '推荐';
-        }else {
-            firstItem = '首页';
+                data.borrow = "borrow";
         }
 
         return (
             <dl className="container footer_container">
-                <dt><Link to="/" className={data.frontpage ? 'active' : ''}><span className="iconfont">&#xe607;</span><span>{firstItem}</span></Link></dt>
-                <dt><Link to="/product/list" className={data.list ? 'active' : ''}><span className="iconfont">&#xe629;</span><span>投资</span></Link></dt>
-                <dt><Link to="/product/insurance" className={data.insurance ? 'active' : ''}><span className="iconfont">&#xe692;</span><span>保险</span></Link></dt>
-                <dt><Link to="/my/home" className={data.home ? 'active' : ''}><span className="iconfont">&#xe67d;</span><span>账户</span></Link></dt>
+                <dt>
+                    <Link to="/" className={data.borrow
+                        ? 'active'
+                        : ''}>
+                        <span className="iconfont">&#xe607;</span>
+                        <span>借钱</span>
+                    </Link>
+                </dt>
+                <dt>
+                    <Link to="/product/list" className={data.repay
+                        ? 'active'
+                        : ''}>
+                        <span className="iconfont">&#xe629;</span>
+                        <span>还钱</span>
+                    </Link>
+                </dt>
+                <dt>
+                    <Link to="/my/home" className={data.home
+                        ? 'active'
+                        : ''}>
+                        <span className="iconfont">&#xe67d;</span>
+                        <span>我的</span>
+                    </Link>
+                </dt>
             </dl>
         );
     }
