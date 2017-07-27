@@ -1,6 +1,6 @@
 import React from 'react'
-import RegisterActions from '../actions/register'
-import RegisterStore from '../stores/register'
+import ForgotActions from '../actions/forgot'
+import ForgotStore from '../stores/forgot'
 import HeaderActions from '../../common/actions/header'
 import Verification from '../../../components/verification'
 import Alert from '../../../components/alert'
@@ -23,18 +23,16 @@ export default React.createClass({
     },
 
     getInitialState: function() {
-        return RegisterStore.getState();
+        return ForgotStore.getState();
     },
 
     componentDidMount: function() {
-        const query = this.props.location.query;
-        RegisterActions.initial(query);
-        RegisterStore.listen(this.onChange);
-        HeaderActions.setTitle('注册');
+        ForgotStore.listen(this.onChange);
+        HeaderActions.setTitle('忘记密码');
     },
 
     componentWillUnmount: function() {
-        RegisterStore.unlisten(this.onChange);
+        ForgotStore.unlisten(this.onChange);
     },
 
     onChange: function(state) {
@@ -42,6 +40,10 @@ export default React.createClass({
     },
 
     render: function() {
+        // console.log(this.state.isRunning);
+        let html = <span className="btn btn-positive" onClick={this.showVerification}>获取验证码</span>;
+        if (this.state.isRunning)
+            html = <span className="btn btn-outlined">获取验证码</span>;
         return (
             <div className="register" style={{
                 minHeight: window.innerHeight - 44
@@ -49,22 +51,15 @@ export default React.createClass({
                 <Header ref="header"/>
                 <div className="container">
                     <form onSubmit={this.onSubmit}>
-                        <Input ref="mobilePhone" name="mobilePhone" placeholder="请填写手机号码" onValid={validator.validateMobile} label="手机号码" isRequired={true}/>
+                        <Input ref="cellphone" name="cellphone" placeholder="请输入您的手机号码" onValid={validator.validateMobile} label="手机号码" isRequired={true}/>
                         <div className="input-group">
-                            <Input ref="verificationCode" name="verificationCode" placeholder="请填写短信验证码" onValid={validator.validateSmsCode} label="短信验证码" isRequired={true}/>
-                            <span className="btn btn-positive" onClick={this.showVerification}>获取验证码</span>
+                            <Input ref="sms_code" name="sms_code" placeholder="输入验证码" onValid={validator.validateSmsCode} label="短信验证码" isRequired={true}/> {html}
                         </div>
-                        <Input type="password" ref="password" name="password" placeholder="请填写密码" onValid={validator.validatePassword} label="密码" isRequired={true}/>
-                        <button className="btn btn-block btn-red" type="submit">注册</button>
+                        <Input type="password" ref="pwd" name="pwd" placeholder="输入新密码" onValid={validator.validatePassword} label="密码" isRequired={true}/>
+                        <button className="btn btn-block btn-red" type="submit">确定</button>
                     </form>
                 </div>
                 <Verification ref="verification" mobile={this.state.mobile}/>
-                <div className="terms-link text-center">
-                    <p>轻触上面的注册按钮,即表示你同意</p>
-                    <p>
-                        <Link to="/page/terms">特华小贷注册协议</Link>
-                    </p>
-                </div>
                 <LoadingComponent ref="loading"/>
             </div>
         );
@@ -73,9 +68,9 @@ export default React.createClass({
     onSubmit: function(e) {
         e.preventDefault();
         var value = {
-            mobilePhone: this.refs.mobilePhone.getValue(),
-            verificationCode: this.refs.verificationCode.getValue(),
-            password: this.refs.password.getValue()
+            cellphone: this.refs.cellphone.getValue(),
+            sms_code: this.refs.sms_code.getValue(),
+            pwd: this.refs.pwd.getValue()
         };
         let isValid = true;
         for (var i in value) {
@@ -90,13 +85,17 @@ export default React.createClass({
             data = objectAssign(data, refererr);
         }
         this.refs.loading.show();
-        RegisterActions.register(data);
+        ForgotActions.forgot(data);
     },
 
     showVerification: function(e) {
         e.preventDefault();
-        if (!this.refs.mobilePhone.getValue())
+        if (!this.refs.cellphone.getValue())
             return undefined;
+
+        // this.setState({
+        //     isRunning: true
+        // }, () => {})
         const node = $(e.target);
         let countdownNumber = 60;
         node.attr('disabled', 'disabled').addClass('btn-outlined').removeClass('btn-positive');
@@ -108,6 +107,6 @@ export default React.createClass({
             countdownNumber -= 1;
             return node.html(countdownNumber + 's后重新发送');
         }, 1000);
-        RegisterActions.sendSms(this.refs.mobilePhone.getValue());
+        ForgotActions.sendSms(this.refs.cellphone.getValue());
     }
 })

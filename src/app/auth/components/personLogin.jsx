@@ -6,7 +6,8 @@ import {Link} from 'react-router'
 import alt from '../../alt'
 import Header from '../../common/components/header'
 import styles from '../styles/login'
-import Form from "../../../components/form/form";
+import Form from "../../../components/form/form"
+import {getParameterByName} from '../../../utils/utils'
 
 export default React.createClass({
 
@@ -44,6 +45,9 @@ export default React.createClass({
                 label: "密码"
             }
         }
+        const type = getParameterByName('type')
+            ? getParameterByName('type')
+            : 10;
         return (
             <div className="auth">
                 <Header ref="header"/>
@@ -57,7 +61,7 @@ export default React.createClass({
                     </form>
                     <ul className="foot-list">
                         <li className="size12">
-                            <Link className="color-gray" to={`/user/login/10`}>忘记密码</Link>
+                            <Link className="color-gray" to={`/user/forgot?type=${type}`}>忘记密码</Link>
                         </li>
                         <li className="size12">
                             <Link className="color-gray" to={`/user/register`}>注册账号</Link>

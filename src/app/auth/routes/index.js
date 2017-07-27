@@ -4,6 +4,8 @@
 // import smsRoute from "./sms";
 import personLogin from "./personLogin";
 import register from "./register"
+import reset from "./reset"
+import forgot from './forgot'
 // import {unLoginRequired} from "../../common/services/authentication";
 
 export default {
@@ -15,6 +17,8 @@ export default {
         // passwordRoute,
         // smsRoute,
         personLogin,
-        register
+        register,
+        reset,
+        forgot
     ]
 }

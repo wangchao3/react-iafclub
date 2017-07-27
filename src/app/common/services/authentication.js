@@ -9,9 +9,10 @@ import {getUserInfoFromLocal} from '../../auth/services/userInfo';
 let user = null;
 
 export function isLogin() {
-    const userInfo = getUserInfoFromLocal('userInfo');
-    YC.current_user = userInfo.res;
-    return !!YC.current_user;
+    const token = Cookies.get("token");
+    if (token)
+        return true;
+    return false;
 }
 
 export function getUser() {

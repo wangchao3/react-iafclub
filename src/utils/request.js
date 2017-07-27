@@ -7,7 +7,7 @@ import {errorHandle} from '../app/common/services/error';
 const token = Cookies.get("token") || "";
 
 const config = {
-    baseURL: "/api/",
+    baseURL: "/",
     timeout: 1000 * 60 * 5,
     headers: {
         "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8"
@@ -31,9 +31,9 @@ jsonConfig.transformRequest = [function(data) {
 
 const responseInterceptors = {
     success: function(response) {
-        if (response.data.code && response.data.code !== "00000000") {
-            return Promise.reject(response.data.msg);
-        }
+        // if (response.data.code && response.data.code !== "00000000") {
+        //     return Promise.reject(response.data.msg);
+        // }
         return response
     },
     fail: function(error) {

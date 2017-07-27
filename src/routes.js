@@ -6,33 +6,30 @@ import indexRoute from "./app/common/routes";
 import productRoute from "./app/product/routes";
 import authRoute from './app/auth/routes';
 import myRoute from './app/my/routes';
+import pageRoute from './app/pages/routes';
 
 export default {
-    component: "div",
-    childRoutes: [
+    component : "div",
+    childRoutes : [
         {
             path: "/",
             component: App,
-            onEnter: (nextState, replace, callback)=> {
+            onEnter: (nextState, replace, callback) => {
                 const {Source, messageId, recipientId, ottoken} = nextState.location.query;
-                if(isLogin() || !Source || !messageId || !recipientId || !ottoken) return callback();
-                oneTimeTokenLogin(ottoken).then(()=> {
+                if (isLogin() || !Source || !messageId || !recipientId || !ottoken)
+                    return callback();
+                oneTimeTokenLogin(ottoken).then(() => {
                     location.reload();
-                }, ()=> {
+                }, () => {
                     replace("/register");
                     callback();
                 })
             },
             indexRoute: indexRoute,
-            childRoutes: [
-                productRoute,
-                authRoute,
-                myRoute,
-            ]
-        },
-        {
+            childRoutes: [productRoute, authRoute, myRoute, pageRoute]
+        }, {
             path: "*",
-            component: NotFound,
-        },
+            component: NotFound
+        }
     ]
 }

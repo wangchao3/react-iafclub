@@ -20,7 +20,6 @@ export default React.createClass({
     componentDidMount: function() {
         HomeStore.listen(this.onChange);
         HeaderActions.setTitle('我的');
-        HomeActions.init();
     },
 
     componentWillUnmount: function() {
@@ -33,7 +32,6 @@ export default React.createClass({
 
     render: function() {
         const userInfo = getUserInfoFromLocal('userInfo');
-        console.log(userInfo);
         return (
             <div className="home">
                 <Header ref="header"/>
@@ -44,30 +42,42 @@ export default React.createClass({
                                 <img src="/assets/images/perindex/head.png"/>
                                 <h1>
                                     <span className="left-des">{userInfo.res.name}{userInfo.res.phone}</span>
-                                    <span className="right-des">个人信息</span>
                                 </h1>
                             </div>
+                            <span className="badge">个人信息</span>
                         </Link>
                     </li>
                 </ul>
                 <ul className="table-view">
                     <li className="table-view-cell">
-                        <Link className="navigate-right">我的借钱记录</Link>
+                        <Link className="navigate-right">
+                            <span className="badge">借款记录</span>
+                            我的借钱记录
+                        </Link>
                     </li>
                 </ul>
                 <ul className="table-view">
                     <li className="table-view-cell">
-                        <Link className="navigate-right">账户安全</Link>
+                        <Link className="navigate-right" to={`/user/reset`}>
+                            <span className="badge">修改密码</span>
+                            账户安全
+                        </Link>
                     </li>
                 </ul>
                 <ul className="table-view">
                     <li className="table-view-cell">
-                        <Link className="navigate-right">帮助中心</Link>
+                        <Link className="navigate-right" to={`/pages/help`}>
+                            <span className="badge">寻找客服</span>
+                            帮助中心
+                        </Link>
                     </li>
                 </ul>
                 <ul className="table-view">
                     <li className="table-view-cell">
-                        <Link className="navigate-right">关于特华小贷</Link>
+                        <Link className="navigate-right" to={`/pages/aboutUs`}>
+                            <span className="badge">公司简介</span>
+                            关于特华小贷
+                        </Link>
                     </li>
                 </ul>
                 <div className="logout">
@@ -80,5 +90,9 @@ export default React.createClass({
 
     toggleActive: function(data) {
         HomeActions.toggleClass(data);
+    },
+
+    logout: function() {
+        HomeActions.logout();
     }
 })

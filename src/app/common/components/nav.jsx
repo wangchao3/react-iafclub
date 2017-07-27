@@ -5,11 +5,10 @@ import NavigationActions from '../actions/nav'
 import NavigationStore from '../stores/nav'
 import alt from '../../alt'
 
-
 export default React.createClass({
 
     contextTypes: {
-        router: React.PropTypes.object,
+        router: React.PropTypes.object
     },
 
     getInitialState: function() {
@@ -25,20 +24,21 @@ export default React.createClass({
         alt.recycle(NavigationStore);
     },
 
-    onChange: function(state){
+    onChange: function(state) {
         this.setState(state);
     },
 
     goHome: function(event) {
         event.preventDefault();
         const {router} = this.context;
-        if(isLogin()) return router.push("/home");
+        if (isLogin())
+            return router.push("/home");
         router.push("/login");
     },
 
-    backAction: function(e){
+    backAction: function(e) {
         e.preventDefault();
-        if(this.state.action){
+        if (this.state.action) {
             this.state.action();
             NavigationActions.resetAction();
             return undefined;
@@ -46,14 +46,12 @@ export default React.createClass({
         this.context.router.goBack();
     },
 
-    render: function(){
+    render: function() {
         const path = location.pathname;
-        if(path === '/' || path === '/my/home'){
-            return (
-                <span />
-            );
-        }else{
-            return <a href="#" className="iconfont nav-icon" onClick={this.backAction}>&#xe609;<span>返回</span></a>
+        if (path === '/' || path === '/my/home') {
+            return (<span/>);
+        } else {
+            return <a href="#" className="iconfont nav-icon" onClick={this.backAction}>&#xe609;</a>
         }
     }
 

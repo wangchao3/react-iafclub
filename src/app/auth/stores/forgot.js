@@ -1,23 +1,27 @@
 import alt from '../../alt'
-import RegisterActions from '../actions/register'
+import ForgotActions from '../actions/forgot'
 import {jsonRequest, request} from '../../../utils/request'
 import url from '../constants/url'
 import {errorHandle} from '../../common/services/error'
 import {hasLogin, authUserId, auth} from '../../common/services/authentication'
 import {getRefererr} from '../../../app/common/services/app'
 import MessageActions from '../../../components/actions/message'
+import {getParameterByName} from '../../../utils/utils'
 
-class RegisterStore {
+class ForgotStore {
 
     constructor() {
-        this.mobilePhone = null;
-        this.bindActions(RegisterActions);
+        this.isRunning = false;
+        this.type = getParameterByName('type')
+            ? getParameterByName('type')
+            : 10;
+        this.bindActions(ForgotActions);
     }
 
     sendSms(phone) {
         let data = {};
         data.phone = phone;
-        data.type = 10;
+        data.type = this.type;
         request.post(url.sendSms, data).then((res) => {
             if (res.data.code !== '00000000')
                 MessageActions.show({message: res.data.msg});
@@ -25,13 +29,9 @@ class RegisterStore {
         });
     }
 
-    onRegister(payload) {
-        let registerData = {};
-        registerData.password = payload.password;
-        registerData.phone = payload.mobilePhone;
-        registerData.sms_code = payload.verificationCode;
-        registerData.type = 10;
-        request.post(url.register, registerData).then((res) => {
+    onForgot(data) {
+        data.type = this.type;
+        request.post(url.forgot, data).then((res) => {
             if (res.data.code !== '00000000')
                 MessageActions.show({message: res.data.msg});
             return this.emitChange();
@@ -40,4 +40,4 @@ class RegisterStore {
 
 }
 
-export default alt.createStore(RegisterStore, 'RegisterStore')
+export default alt.createStore(ForgotStore, 'ForgotStore')
