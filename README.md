@@ -49,12 +49,8 @@
     server {
         server_name mdev.iafclub.com;
 
-        location /jrrest {
-            proxy_pass http://jrt-msit.iafclub.com;
-        }
-
-        location /html {
-            proxy_pass http://jrt-msit.iafclub.com;
+        location /api {
+            proxy_pass http://m-tehualoan.iafclub.com;
         }
 
         location /sockjs-node {
@@ -70,7 +66,7 @@
     }
 
 
-其中 <code>/jrrest</code> <code>/html</code> 的代理地址为后端提供的地址， 请根据实际情况更改
+其中 <code>/api</code> 的代理地址为后端提供的地址， 请根据实际情况更改
 
 这时项目开发地址更改为 <http://mdev.iafclub.com> ，记得更改 hosts 文件。
 
