@@ -5,5 +5,7 @@ export default {
     sendSms : BASE_API_PATH + 'reg/sendsms',
     register : BASE_API_PATH + 'reg/beuser',
     reset : BASE_API_PATH + 'user/modpwd',
-    logout : BASE_API_PATH + 'login/doexit'
+    logout : BASE_API_PATH + 'login/doexit',
+    allBank : BASE_API_PATH + 'Tool/banks',
+    identity : BASE_API_PATH + 'loan/identityValidated'
 }

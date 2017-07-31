@@ -6,12 +6,13 @@ import personLogin from "./personLogin";
 import register from "./register"
 import reset from "./reset"
 import forgot from './forgot'
+import identity from './identity'
 // import {unLoginRequired} from "../../common/services/authentication";
 
 export default {
-    path : "user",
+    path: "user",
     //onEnter : unLoginRequired,
-    childRoutes : [
+    childRoutes: [
         // phoneCheckRoute,
         // companyLoginRoute,
         // passwordRoute,
@@ -19,6 +20,7 @@ export default {
         personLogin,
         register,
         reset,
-        forgot
+        forgot,
+        identity
     ]
 }
