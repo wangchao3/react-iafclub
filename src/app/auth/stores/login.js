@@ -23,7 +23,7 @@ class LoginStore {
             : 10;
         data.password = payload.password;
         data.phone = payload.phone;
-        jsonRequest.post(url.Login, data).then((res) => {
+        jsonRequest.post(url.login, data).then((res) => {
             if (res.data.code !== '00000000') {
                 MessageActions.show({message: res.data.msg});
             } else {
