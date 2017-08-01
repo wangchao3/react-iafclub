@@ -19,8 +19,7 @@ class RegisterStore {
         data.phone = phone;
         data.type = 10;
         request.post(url.sendSms, data).then((res) => {
-            if (res.data.code !== '00000000')
-                MessageActions.show({message: res.data.msg});
+            if (res.data.code !== '00000000') MessageActions.show({message: res.data.msg});
             this.emitChange();
         });
     }
@@ -32,9 +31,8 @@ class RegisterStore {
         registerData.sms_code = payload.verificationCode;
         registerData.type = 10;
         request.post(url.register, registerData).then((res) => {
-            if (res.data.code !== '00000000')
-                MessageActions.show({message: res.data.msg});
-            return this.emitChange();
+            if (res.data.code !== '00000000') MessageActions.show({message: res.data.msg});
+            this.emitChange();
         })
     }
 

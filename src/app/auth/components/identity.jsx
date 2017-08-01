@@ -68,17 +68,19 @@ export default React.createClass({
                         <label>银行卡绑定手机</label>
                         <input type="text" placeholder="输入手机号码" ref="cardPhone" />
                     </div>
-                    <div className="input-row">
+                    <div className="input-row sendSms">
                         <label>手机验证码</label>
                         <input type="text" placeholder="输入验证码" ref="shortCode" />
+                        <button onClick={this.submit}>获取验证码</button>
                     </div>
                     <div className="p20">
-                        <button className="btn btn-red btn-block btn-other" onClick={this.submit}>下一步</button>
+                        <button className="btn btn-red btn-block btn-other" onClick={this.next}>下一步</button>
                     </div>
                 </div>
             </div>
         );
     },
+
     submit: function(e) {
         e.preventDefault();
         const card_name = this.refs.name.value;
@@ -94,5 +96,12 @@ export default React.createClass({
             bank_name: bank_name,
         }
         IdentityActions.submit(payload);
+    },
+
+    next: function(e) {
+        e.preventDefault();
+        const code = this.refs.shortCode.value;
+        IdentityActions.checkPhone(code);
     }
+
 });

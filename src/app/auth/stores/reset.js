@@ -17,7 +17,7 @@ class ResetStore {
     onUpdate(payload) {
         if (!payload)
             return false;
-        jsonRequest.post(url.reset, payload).then((res) => {
+        jsonRequest.post(url.modpwd, payload).then((res) => {
             if (res.data.code !== '00000000') {
                 return alert(res.data.msg);
             } else {

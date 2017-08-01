@@ -12,9 +12,7 @@ class ForgotStore {
 
     constructor() {
         this.isRunning = false;
-        this.type = getParameterByName('type')
-            ? getParameterByName('type')
-            : 10;
+        this.type = getParameterByName('type') ? getParameterByName('type') : 10;
         this.bindActions(ForgotActions);
     }
 
@@ -23,18 +21,19 @@ class ForgotStore {
         data.phone = phone;
         data.type = this.type;
         request.post(url.sendSms, data).then((res) => {
-            if (res.data.code !== '00000000')
-                MessageActions.show({message: res.data.msg});
+            if (res.data.code !== '00000000') MessageActions.show({message: res.data.msg});
             this.emitChange();
         });
     }
 
     onForgot(data) {
         data.type = this.type;
-        request.post(url.forgot, data).then((res) => {
-            if (res.data.code !== '00000000')
-                MessageActions.show({message: res.data.msg});
-            return this.emitChange();
+        console.log(data);
+        request.post(url.resetpwd, data).then((res) => {
+            if (res.data.code !== '00000000') return errorHandle(res.data.msg);
+            MessageActions.show({message: '新密码设置成功，立即登录'});
+            window.location.href = '/my/home';
+            this.emitChange();
         })
     }
 

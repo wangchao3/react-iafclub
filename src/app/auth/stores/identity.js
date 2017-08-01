@@ -12,6 +12,7 @@ class IdentityStore {
 
     constructor() {
         this.banks = null;
+        this.checkData = {};
         this.bindActions(IdentityActions);
     }
 
@@ -27,8 +28,7 @@ class IdentityStore {
     }
 
     submit(payload) {
-        if (!payload)
-            return false;
+        if (!payload) return false;
         for (var i = 0; i < this.banks.length; i++) {
             if (payload.bank_name == this.banks[i].name) {
                 payload.bank_key = this.banks[i].bank_key;
@@ -36,6 +36,22 @@ class IdentityStore {
         }
         console.log(payload);
         jsonRequest.post(url.identity, payload).then((res) => {
+            if (res.data.code !== '00000000') {
+                MessageActions.show({message: res.data.msg});
+            } else {
+                this.checkData = {
+                    ticket: res.data.res.ticket,
+                    api_user_id: res.data.res.api_user_id
+                }
+                this.emitChange();
+            }
+        });
+    }
+
+    checkPhone(code) {
+        if (!code) return false;
+        this.checkData.code = code;
+        jsonRequest.post(url.smsIdentity, this.checkData).then((res) => {
             if (res.data.code !== '00000000') {
                 MessageActions.show({message: res.data.msg});
             } else {

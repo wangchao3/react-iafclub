@@ -79,12 +79,9 @@ export default React.createClass({
             };
         if (!isValid)
             return undefined;
-        const refererr = getRefererr();
         let data = JSON.parse(JSON.stringify(value))
-        if (refererr) {
-            data = objectAssign(data, refererr);
-        }
         this.refs.loading.show();
+        console.log(data);
         ForgotActions.forgot(data);
     },
 
