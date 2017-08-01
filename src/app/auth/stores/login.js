@@ -1,5 +1,5 @@
 import alt from '../../alt'
-import PersonLoginActions from '../actions/personLogin'
+import LoginActions from '../actions/login'
 import {jsonRequest, request} from '../../../utils/request'
 import url from '../constants/url'
 import {errorHandle} from '../../common/services/error'
@@ -8,10 +8,10 @@ import {auth} from '../../common/services/authentication'
 import {saveUserInfoToLocal} from '../services/userInfo'
 import MessageActions from '../../../components/actions/message'
 
-class PersonLoginStore {
+class LoginStore {
 
     constructor() {
-        this.bindActions(PersonLoginActions);
+        this.bindActions(LoginActions);
     }
 
     onLogin(payload) {
@@ -23,7 +23,7 @@ class PersonLoginStore {
             : 10;
         data.password = payload.password;
         data.phone = payload.phone;
-        jsonRequest.post(url.personLogin, data).then((res) => {
+        jsonRequest.post(url.Login, data).then((res) => {
             if (res.data.code !== '00000000') {
                 MessageActions.show({message: res.data.msg});
             } else {
@@ -38,4 +38,4 @@ class PersonLoginStore {
 
 }
 
-export default alt.createStore(PersonLoginStore, 'PersonLoginStore')
+export default alt.createStore(LoginStore, 'LoginStore')

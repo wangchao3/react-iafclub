@@ -1,6 +1,6 @@
 import React from 'react'
-import PersonLoginStore from '../stores/personLogin'
-import PersonLoginActions from '../actions/personLogin'
+import LoginStore from '../stores/login'
+import LoginActions from '../actions/login'
 import HeaderActions from '../../common/actions/header'
 import {Link} from 'react-router'
 import alt from '../../alt'
@@ -12,16 +12,21 @@ import {getParameterByName} from '../../../utils/utils'
 export default React.createClass({
 
     getInitialState: function() {
-        return PersonLoginStore.getState();
+        return LoginStore.getState();
     },
 
     componentDidMount: function() {
-        PersonLoginStore.listen(this.onChange);
-        HeaderActions.setTitle('个人消费贷');
+        LoginStore.listen(this.onChange);
+        const type = getParameterByName('type') ? getParameterByName('type') : 10;
+        if(type == 10) {
+            HeaderActions.setTitle('个人消费贷');
+        }else {
+            HeaderActions.setTitle('企业经营贷');
+        }
     },
 
     componentWillUnmount: function() {
-        PersonLoginStore.unlisten(this.onChange);
+        LoginStore.unlisten(this.onChange);
     },
 
     onChange: function(state) {
@@ -45,9 +50,7 @@ export default React.createClass({
                 label: "密码"
             }
         }
-        const type = getParameterByName('type')
-            ? getParameterByName('type')
-            : 10;
+        const type = getParameterByName('type') ? getParameterByName('type') : 10;
         return (
             <div className="auth">
                 <Header ref="header"/>
@@ -77,6 +80,6 @@ export default React.createClass({
         const data = this.refs.form.getValue();
         if (data.isInvalid)
             return undefined;
-        PersonLoginActions.login(data.value);
+        LoginActions.login(data.value);
     }
 })

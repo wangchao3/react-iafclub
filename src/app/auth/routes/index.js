@@ -2,7 +2,7 @@
 // import companyLoginRoute from "./companyLogin";
 // import passwordRoute from "./password";
 // import smsRoute from "./sms";
-import personLogin from "./personLogin";
+import login from "./login";
 import register from "./register"
 import reset from "./reset"
 import forgot from './forgot'
@@ -17,7 +17,7 @@ export default {
         // companyLoginRoute,
         // passwordRoute,
         // smsRoute,
-        personLogin,
+        login,
         register,
         reset,
         forgot,
