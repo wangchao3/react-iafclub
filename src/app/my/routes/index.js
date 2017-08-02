@@ -1,4 +1,5 @@
 import homeRoute from "./home";
+import infoRoute from './userInfo'
 import {loginRequired} from "../../common/services/authentication";
 
 export default {
@@ -6,5 +7,6 @@ export default {
     onEnter: loginRequired,
     childRoutes: [
         homeRoute,
+        infoRoute
     ]
 }

@@ -37,7 +37,7 @@ export default React.createClass({
                 <Header ref="header"/>
                 <ul className="table-view j-table-view">
                     <li className="table-view-cell">
-                        <Link className="navigate-right">
+                        <Link className="navigate-right" to={`/my/userInfo`}>
                             <div className="user">
                                 <img src="/assets/images/perindex/head.png"/>
                                 <h1>
