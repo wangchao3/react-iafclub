@@ -1,7 +1,7 @@
 import React from 'react'
 import HeaderActions from '../../common/actions/header'
-import UserInfoActions from '../actions/userInfo'
-import UserInfoStore from '../stores/userInfo'
+import ChangeCardActions from '../actions/changeCard'
+import ChangeCardStore from '../stores/changeCard'
 import Spinner from '../../../components/spinner'
 import alt from '../../alt'
 import styles from '../styles/userInfo'
@@ -9,24 +9,22 @@ import Header from '../../common/components/header'
 import cx from 'classnames'
 import {Link} from 'react-router'
 import Select from '../../../components/selector'
-import {EDUCATION} from '../constants/education'
-import {CHILDREN} from '../constants/children'
-import {MARRIAGE} from '../constants/marriage'
 
 export default React.createClass({
 
     getInitialState: function() {
-        return UserInfoStore.getState();
+        return ChangeCardStore.getState();
     },
 
     componentDidMount: function() {
-        UserInfoStore.listen(this.onChange);
-        HeaderActions.setTitle('个人信息');
-        UserInfoActions.init();
+        ChangeCardStore.listen(this.onChange);
+        HeaderActions.setTitle('更换银行卡');
+        ChangeCardActions.init();
+        ChangeCardActions.initBank();
     },
 
     componentWillUnmount: function() {
-        UserInfoStore.unlisten(this.onChange);
+        ChangeCardStore.unlisten(this.onChange);
     },
 
     onChange: function(state) {
@@ -36,15 +34,11 @@ export default React.createClass({
     render: function() {
         const userInfo = this.state.userInfo;
         if(!userInfo) return(<Spinner />);
-        let eduOptions = [], marryOptions = [], childOptions = [];
-        for (var i = 0; i < EDUCATION.length; i++) {
-            eduOptions.push(<option value={EDUCATION[i].key} key={i}>{EDUCATION[i].value}</option>);
-        }
-        for (var i = 0; i < MARRIAGE.length; i++) {
-            marryOptions.push(<option value={MARRIAGE[i].key} key={i}>{MARRIAGE[i].value}</option>);
-        }
-        for (var i = 0; i < CHILDREN.length; i++) {
-            childOptions.push(<option value={CHILDREN[i].key} key={i}>{CHILDREN[i].value}</option>);
+        const banks = this.state.banks;
+        if(!banks) return (<Spinner />)
+        let options = [];
+        for (var i = 0; i < banks.length; i++) {
+            options.push(<option value={banks[i].name} key={i}>{banks[i].name}</option>);
         }
         return (
             <div className="userInfo">
@@ -59,7 +53,7 @@ export default React.createClass({
                         身份证号
                     </li>
                     <li className="arrow">
-                        <Link className="navigate-right" to={`/my/changeCard`}>
+                        <Link className="navigate-right">
                             <span className="right">{userInfo.bank_card}</span>
                             常用银行卡
                         </Link>
@@ -68,22 +62,11 @@ export default React.createClass({
                         <span className="right">{userInfo.cellphone}</span>
                         手机号
                     </li>
-                    <li>
-                        <Select options={eduOptions} ref="education" value={userInfo.max_edu}/>
-                        最高学历
-                    </li>
-                    <li>
-                        <Select options={marryOptions} ref="marriage" value={userInfo.marital_status}/>
-                        婚姻状态
-                    </li>
-                    <li>
-                        <Select options={childOptions} ref="children" value={userInfo.family_status}/>
-                        子女情况
-                    </li>
+
                 </ul>
 
                 <div className="saveBtn">
-                    <button className="btn btn-red btn-block" onClick={this.save}>保存修改</button>
+                    <button className="btn btn-red btn-block" onClick={this.save}>确认修改</button>
                 </div>
             </div>
         );
@@ -99,6 +82,6 @@ export default React.createClass({
             marital_status: marital_status,
             family_status: family_status,
         }
-        UserInfoActions.save(payload);
+        ChangeCardActions.save(payload);
     }
 })

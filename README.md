@@ -54,17 +54,20 @@
         }
 
         location /sockjs-node {
+           proxy_pass http://127.0.0.1:7575;
+           proxy_http_version 1.1;
+           proxy_set_header Upgrade $http_upgrade;
+           proxy_set_header Connection "upgrade";
+        }
+
+        location /build {
             proxy_pass http://127.0.0.1:7575;
-            proxy_http_version 1.1;
-            proxy_set_header Upgrade $http_upgrade;
-            proxy_set_header Connection "upgrade";
         }
 
         location / {
             proxy_pass http://127.0.0.1:3333;
         }
     }
-
 
 其中 <code>/api</code> 的代理地址为后端提供的地址， 请根据实际情况更改
 
