@@ -30,7 +30,7 @@ class LoginStore {
                 console.log(res.data.res);
                 auth(res.data.res.token);
                 saveUserInfoToLocal('userInfo', res.data);
-                window.location.href = '/my/home';
+                window.location.href = '/per/index';
                 this.emitChange();
             }
         });

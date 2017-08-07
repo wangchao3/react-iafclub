@@ -29,7 +29,7 @@ export default React.createClass({
         return (
             <dl className="container footer_container">
                 <dt>
-                    <Link to="/" className={data.borrow
+                    <Link to="/per/index" className={data.borrow
                         ? 'active'
                         : ''}>
                         <span className="iconfont">&#xe607;</span>

@@ -7,6 +7,7 @@ import productRoute from "./app/product/routes";
 import authRoute from './app/auth/routes';
 import myRoute from './app/my/routes';
 import pageRoute from './app/pages/routes';
+import perIndexRoute from './app/index/routes';
 
 export default {
     component : "div",
@@ -26,7 +27,7 @@ export default {
                 })
             },
             indexRoute: indexRoute,
-            childRoutes: [productRoute, authRoute, myRoute, pageRoute]
+            childRoutes: [productRoute, authRoute, myRoute, pageRoute, perIndexRoute]
         }, {
             path: "*",
             component: NotFound

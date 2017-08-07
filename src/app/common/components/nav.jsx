@@ -32,8 +32,8 @@ export default React.createClass({
         event.preventDefault();
         const {router} = this.context;
         if (isLogin())
-            return router.push("/home");
-        router.push("/login");
+            return router.push("/my/home");
+        router.push("/user/login");
     },
 
     backAction: function(e) {
@@ -48,7 +48,7 @@ export default React.createClass({
 
     render: function() {
         const path = location.pathname;
-        if (path === '/' || path === '/my/home') {
+        if (path === '/' || path === '/my/home'|| path === '/per/index') {
             return (<span/>);
         } else {
             return <a href="#" className="iconfont nav-icon" onClick={this.backAction}>&#xe609;</a>
