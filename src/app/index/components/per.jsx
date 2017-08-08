@@ -49,7 +49,7 @@ export default React.createClass({
                         <p className="size12 available-amount">可用额度</p>
                         <p className="can-borrow">{previewData.available_amount}</p>
                     </div>
-                    <Link className="btn btn-red btn-block">借一笔钱</Link>
+                    <Link className="btn btn-red btn-block" to={`/loan`}>借一笔钱</Link>
                     <div className="text-center block">
                         <Link to={`/pages/help`}>借款须知></Link>
                     </div>
