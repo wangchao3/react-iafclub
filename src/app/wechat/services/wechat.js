@@ -5,6 +5,14 @@ export function isWechat() {
     return ua.indexOf('micromessenger') !== -1;
 }
 
+export function isApp() {
+    if (/(iPhone|iPad|iPod|iOS|Android)/i.test(navigator.userAgent)) {
+        return true;
+    }else {
+        return false;
+    }
+}
+
 export function setRootPath() {
     const port = location.port ? ':' + location.port : '';
     localStorage['rootPath'] = location.protocol + '//' + location.hostname + port + location.pathname + location.search;

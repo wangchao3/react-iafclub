@@ -10,6 +10,7 @@ import cx from 'classnames'
 import {Link} from 'react-router'
 import Select from '../../../components/selector'
 import Input from '../../../components/input'
+import {findDOMNode} from "react-dom";
 
 export default React.createClass({
 
@@ -67,14 +68,11 @@ export default React.createClass({
 
     save: function(e) {
         e.preventDefault();
-        const max_edu = this.refs.education.getValue();
-        const marital_status = this.refs.marriage.getValue();
-        const family_status = this.refs.children.getValue();
+        const amount = findDOMNode(this.refs.amount).value.trim()
         const payload = {
-            max_edu: max_edu,
-            marital_status: marital_status,
-            family_status: family_status,
+            amount: amount,
         }
-        LoanActions.save(payload);
+        console.log(payload);
+        // LoanActions.save(payload);
     }
 })
