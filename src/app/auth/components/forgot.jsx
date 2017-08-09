@@ -13,7 +13,6 @@ import {getRefererr} from '../../common/services/app';
 import objectAssign from 'object-assign';
 import Input from "../../../components/form/text";
 import Form from '../../../components/form/form'
-import Header from '../../common/components/header'
 import $ from "jquery"
 
 export default React.createClass({
@@ -45,10 +44,7 @@ export default React.createClass({
         if (this.state.isRunning)
             html = <span className="btn btn-outlined">获取验证码</span>;
         return (
-            <div className="register" style={{
-                minHeight: window.innerHeight - 44
-            }}>
-                <Header ref="header"/>
+            <div className="register body-container" style={{minHeight: window.innerHeight - 44}}>
                 <div className="container">
                     <form onSubmit={this.onSubmit}>
                         <Input ref="cellphone" name="cellphone" placeholder="请输入您的手机号码" onValid={validator.validateMobile} label="手机号码" isRequired={true}/>

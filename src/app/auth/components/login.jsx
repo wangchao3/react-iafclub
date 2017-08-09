@@ -4,7 +4,6 @@ import LoginActions from '../actions/login'
 import HeaderActions from '../../common/actions/header'
 import {Link} from 'react-router'
 import alt from '../../alt'
-import Header from '../../common/components/header'
 import styles from '../styles/login'
 import Form from "../../../components/form/form"
 import {getParameterByName} from '../../../utils/utils'
@@ -52,8 +51,7 @@ export default React.createClass({
         }
         const type = getParameterByName('type') ? getParameterByName('type') : 10;
         return (
-            <div className="auth">
-                <Header ref="header"/>
+            <div className="auth body-container">
                 <div className="login-body text-center">
                     <img src="/assets/images/index/login.png" alt="logo" className="logo"/>
                     <form className="form" onSubmit={this.onSubmit}>

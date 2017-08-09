@@ -9,6 +9,7 @@ import ErrorHandlerStore from './common/stores/error'
 import ErrorPage from './pages/components/500'
 import NotFoundPage from './pages/components/404'
 import Cookies from "js-cookie";
+import Header from './common/components/header'
 
 export default React.createClass({
 
@@ -42,6 +43,13 @@ export default React.createClass({
     },
 
     render: function(){
+        const pathname = this.props.location.pathname;
+        let showHeader;
+        if(pathname == '/') {
+            showHeader = (<div />);
+        }else {
+            showHeader = (<Header ref="header" />);
+        }
         const content = (() => {
             if(this.state.err){
                 if(this.state.err === 404) return (<NotFoundPage />);
@@ -55,6 +63,7 @@ export default React.createClass({
         })()
         return (
             <div>
+                {showHeader}
                 {content}
                 <Message />
             </div>

@@ -5,7 +5,6 @@ import PerStore from '../stores/per'
 import Spinner from '../../../components/spinner'
 import alt from '../../alt'
 import styles from '../styles/per'
-import Header from '../../common/components/header'
 import cx from 'classnames'
 import {Link} from 'react-router'
 import Footer from '../../../components/footer'
@@ -36,8 +35,7 @@ export default React.createClass({
         const previewData = this.state.previewData;
         if(!previewData) return(<Spinner />);
         return (
-            <div className="perindex">
-                <Header ref="header"/>
+            <div className="perindex body-container">
                 <div className="bodyContent">
                     <h4>{userInfo.res.name},你好！</h4>
                     <div>总额度</div>

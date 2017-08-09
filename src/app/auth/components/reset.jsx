@@ -12,7 +12,6 @@ import styles from '../styles/reset'
 import objectAssign from 'object-assign';
 import Input from "../../../components/form/text";
 import Form from '../../../components/form/form'
-import Header from '../../common/components/header'
 
 export default React.createClass({
     contextTypes: {
@@ -38,8 +37,7 @@ export default React.createClass({
 
     render: function() {
         return (
-            <div className="auth">
-                <Header ref="header"/>
+            <div className="auth body-container">
                 <div className="login-body">
                     <form onSubmit={this.onSubmit}>
                         <Input type="password" ref="old_pwd" name="old_pwd" placeholder="请填写旧密码" onValid={validator.validatePassword} label="旧密码" isRequired={true}/>

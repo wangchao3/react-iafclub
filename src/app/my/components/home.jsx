@@ -6,7 +6,6 @@ import Spinner from '../../../components/spinner'
 import alt from '../../alt'
 import styles from '../styles/home'
 import Footer from '../../../components/footer'
-import Header from '../../common/components/header'
 import cx from 'classnames'
 import {Link} from 'react-router'
 import {getUserInfoFromLocal} from '../../auth/services/userInfo'
@@ -33,8 +32,7 @@ export default React.createClass({
     render: function() {
         const userInfo = getUserInfoFromLocal('userInfo');
         return (
-            <div className="home">
-                <Header ref="header"/>
+            <div className="home body-container">
                 <ul className="table-view j-table-view">
                     <li className="table-view-cell">
                         <Link className="navigate-right" to={`/my/userInfo`}>

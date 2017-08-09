@@ -1,6 +1,5 @@
 import React from 'react'
 import HeaderActions from '../../common/actions/header'
-import Header from '../../common/components/header'
 import styles from '../styles/aboutUs'
 
 export default React.createClass({
@@ -10,8 +9,7 @@ export default React.createClass({
 
     render: function() {
         return (
-            <div className="AboutUs">
-                <Header ref="header"/>
+            <div className="AboutUs body-container">
                 <img className="head-img" src="/assets/images/perindex/about-us.jpg"/>
                 <div className="body-content">
                     <p className="tiny-title">公司简介</p>
@@ -22,7 +20,7 @@ export default React.createClass({
                     <p>邮编：518000</p>
                     <p className="tiny-title">客户咨询</p>
                     <p>如果您在申请贷款的过程中有任何疑问，请您与特华小贷客服人员联系。</p>
-                    <p>客服电话：4006-855-909</p>
+                    <p>客服电话：<a href="tel:4006-855-909">4006-855-909</a></p>
                     <p>客服邮箱：kf@tehualoan.com</p>
                     <p>工作时间：9:00 – 21:00</p>
                 </div>

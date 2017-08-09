@@ -4,7 +4,6 @@ import IdentityActions from '../actions/identity'
 import HeaderActions from '../../common/actions/header'
 import {Link} from 'react-router'
 import alt from '../../alt'
-import Header from '../../common/components/header'
 import styles from '../styles/identity'
 import Spinner from '../../../components/spinner'
 import Select from '../../../components/selector'
@@ -41,8 +40,7 @@ export default React.createClass({
             options.push(<option value={banks[i].name} key={i}>{banks[i].name}</option>);
         }
         return (
-            <div className="identity">
-                <Header ref="header"/>
+            <div className="identity body-container">
                 <div className="text-center text-notice">加油！完成后最高可获得10万的授权额度</div>
                 <div className="logo">
                     <img src="/assets/images/perindex/identity.png" alt="logo"/>

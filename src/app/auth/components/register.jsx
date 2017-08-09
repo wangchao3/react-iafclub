@@ -13,7 +13,6 @@ import {getRefererr} from '../../common/services/app';
 import objectAssign from 'object-assign';
 import Input from "../../../components/form/text";
 import Form from '../../../components/form/form'
-import Header from '../../common/components/header'
 import $ from "jquery"
 
 export default React.createClass({
@@ -43,26 +42,21 @@ export default React.createClass({
 
     render: function() {
         return (
-            <div className="register" style={{
-                minHeight: window.innerHeight - 44
-            }}>
-                <Header ref="header"/>
-                <div className="container">
-                    <form onSubmit={this.onSubmit}>
-                        <Input ref="mobilePhone" name="mobilePhone" placeholder="请填写手机号码" onValid={validator.validateMobile} label="手机号码" isRequired={true}/>
-                        <div className="input-group">
-                            <Input ref="verificationCode" name="verificationCode" placeholder="请填写短信验证码" onValid={validator.validateSmsCode} label="短信验证码" isRequired={true}/>
-                            <span className="btn btn-positive" onClick={this.showVerification}>获取验证码</span>
-                        </div>
-                        <Input type="password" ref="password" name="password" placeholder="请填写密码" onValid={validator.validatePassword} label="密码" isRequired={true}/>
-                        <button className="btn btn-block btn-red" type="submit">注册</button>
-                    </form>
-                </div>
+            <div className="register body-container" style={{minHeight: window.innerHeight - 44}}>
+                <form onSubmit={this.onSubmit}>
+                    <Input ref="mobilePhone" name="mobilePhone" placeholder="请填写手机号码" onValid={validator.validateMobile} label="手机号码" isRequired={true}/>
+                    <div className="input-group">
+                        <Input ref="verificationCode" name="verificationCode" placeholder="请填写短信验证码" onValid={validator.validateSmsCode} label="短信验证码" isRequired={true}/>
+                        <span className="btn btn-positive" onClick={this.showVerification}>获取验证码</span>
+                    </div>
+                    <Input type="password" ref="password" name="password" placeholder="请填写密码" onValid={validator.validatePassword} label="密码" isRequired={true}/>
+                    <button className="btn btn-block btn-red" type="submit">注册</button>
+                </form>
                 <Verification ref="verification" mobile={this.state.mobile}/>
                 <div className="terms-link text-center">
                     <p>轻触上面的注册按钮,即表示你同意</p>
                     <p>
-                        <Link to="/page/terms">特华小贷注册协议</Link>
+                        <Link to="/pages/agreement">特华小贷注册协议</Link>
                     </p>
                 </div>
                 <LoadingComponent ref="loading"/>

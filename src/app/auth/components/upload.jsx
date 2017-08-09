@@ -3,7 +3,6 @@ import UploadStore from '../stores/upload'
 import UploadActions from '../actions/upload'
 import HeaderActions from '../../common/actions/header'
 import alt from '../../alt'
-import Header from '../../common/components/header'
 import styles from '../styles/upload'
 import Spinner from '../../../components/spinner'
 import {findDOMNode} from "react-dom";
@@ -33,7 +32,6 @@ export default React.createClass({
     render: function() {
         return (
             <div className="upload">
-                <Header ref="header"/>
                 <div className="bodyContainer">
                     <form className="form" onSubmit={this.onSubmit}>
                         <Form dataset={this.state.dataset} ref="form" />

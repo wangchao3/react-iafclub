@@ -5,7 +5,6 @@ import ChangeCardStore from '../stores/changeCard'
 import Spinner from '../../../components/spinner'
 import alt from '../../alt'
 import styles from '../styles/userInfo'
-import Header from '../../common/components/header'
 import cx from 'classnames'
 import {Link} from 'react-router'
 import Select from '../../../components/selector'
@@ -41,8 +40,7 @@ export default React.createClass({
             options.push(<option value={banks[i].name} key={i}>{banks[i].name}</option>);
         }
         return (
-            <div className="userInfo">
-                <Header ref="header"/>
+            <div className="userInfo body-container">
                 <ul>
                     <li>
                         <span className="right">{userInfo.name}</span>

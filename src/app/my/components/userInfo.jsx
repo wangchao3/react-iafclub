@@ -5,7 +5,6 @@ import UserInfoStore from '../stores/userInfo'
 import Spinner from '../../../components/spinner'
 import alt from '../../alt'
 import styles from '../styles/userInfo'
-import Header from '../../common/components/header'
 import cx from 'classnames'
 import {Link} from 'react-router'
 import Select from '../../../components/selector'
@@ -47,8 +46,7 @@ export default React.createClass({
             childOptions.push(<option value={CHILDREN[i].key} key={i}>{CHILDREN[i].value}</option>);
         }
         return (
-            <div className="userInfo">
-                <Header ref="header"/>
+            <div className="userInfo body-container">
                 <ul>
                     <li>
                         <span className="right">{userInfo.name}</span>

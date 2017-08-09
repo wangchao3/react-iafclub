@@ -5,7 +5,6 @@ import LoanStore from '../stores/loan'
 import Spinner from '../../../components/spinner'
 import alt from '../../alt'
 import styles from '../styles/loan'
-import Header from '../../common/components/header'
 import cx from 'classnames'
 import {Link} from 'react-router'
 import Select from '../../../components/selector'
@@ -41,8 +40,7 @@ export default React.createClass({
             monthOptions.push(<option value={info.loan_term[i]} key={i}>{info.loan_term[i]}</option>);
         }
         return (
-            <div className="loan">
-                <Header ref="header"/>
+            <div className="loan body-container">
                 <ul>
                     <li className="amountLi">
                         <label>借多少</label>

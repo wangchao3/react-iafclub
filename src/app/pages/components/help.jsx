@@ -1,6 +1,5 @@
 import React from 'react'
 import HeaderActions from '../../common/actions/header'
-import Header from '../../common/components/header'
 import {Link} from 'react-router'
 import {FAQS} from '../constants/faq'
 import {APPLYS} from '../constants/apply'
@@ -46,8 +45,7 @@ export default React.createClass({
             );
         });
         return (
-            <div className="help">
-                <Header ref="header"/>
+            <div className="help body-container">
                 <ul className="table-view">
                     <li className="table-view-cell table-view-divider">申请</li>
                     {ApplyNode}
