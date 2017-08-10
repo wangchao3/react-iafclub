@@ -10,7 +10,7 @@ class HeaderStore {
     }
 
     onSetTitle(title) {
-        this.title = title
+        this.title = title;
     }
 
     onHide(){

@@ -17,6 +17,7 @@ export default React.createClass({
     componentDidMount: function() {
         LoginStore.listen(this.onChange);
         const type = getParameterByName('type') ? getParameterByName('type') : 10;
+        HeaderActions.show();
         if(type == 10) {
             HeaderActions.setTitle('个人消费贷');
         }else {

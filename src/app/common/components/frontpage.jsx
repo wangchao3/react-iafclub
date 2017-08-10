@@ -15,7 +15,7 @@ export default React.createClass({
 
     componentDidMount: function() {
         FrontpageStore.listen(this.onChange);
-        HeaderActions.setTitle('首页');
+        HeaderActions.hide();
     },
 
     componentWillUnmount: function() {

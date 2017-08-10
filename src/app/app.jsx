@@ -43,13 +43,6 @@ export default React.createClass({
     },
 
     render: function(){
-        const pathname = this.props.location.pathname;
-        let showHeader;
-        if(pathname == '/') {
-            showHeader = (<div />);
-        }else {
-            showHeader = (<Header ref="header" />);
-        }
         const content = (() => {
             if(this.state.err){
                 if(this.state.err === 404) return (<NotFoundPage />);
@@ -63,7 +56,7 @@ export default React.createClass({
         })()
         return (
             <div>
-                {showHeader}
+                <Header ref="header" />
                 {content}
                 <Message />
             </div>
