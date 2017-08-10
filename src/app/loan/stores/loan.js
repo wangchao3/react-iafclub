@@ -12,8 +12,13 @@ class LoanStore {
 
     constructor() {
         this.isRunning = false;
-        this.type = getParameterByName('type') ? getParameterByName('type') : 10;
+        this.typeName = '月';
+        this.type = 10;
         this.info = null;
+        this.toPay = null;
+        this.loanTermFlag = 10;
+        this.loanAmt = 1000;
+        this.loanTerm = 12;
         this.bindActions(LoanActions);
     }
 
@@ -21,8 +26,33 @@ class LoanStore {
         request.get(url.loan_apply).then((res) => {
             if (res.data.code !== '00000000') MessageActions.show({message: res.data.msg});
             this.info = res.data.res;
+            this.type = this.info.loan_term_type;
+            if (this.type !== 10) this.typeName = '天';
+            if (this.type == 10) this.loanTermFlag = 20;
+            this.change();
             this.emitChange();
         });
+    }
+
+    change(payload) {
+        if (payload) {
+            this.loanAmt = payload.amount;
+            this.loanTerm = payload.howLong
+        }
+        const data = {
+            calculateType: "10",
+            loanAmt: this.loanAmt*100,
+            loanRate: this.info.year_rate*100,
+            loanTerm: this.loanTerm,
+            loanTermFlag: this.loanTermFlag,
+            paymentMethod: "RPT000010",
+            startDate: new Date().getTime()
+        }
+        jsonRequest.post(url.calculator, data).then((res) => {
+            if (res.data.responseCode !== '00') MessageActions.show({message: res.data.responseMessage});
+            this.toPay = res.data.content;
+            this.emitChange();
+        })
     }
 
 }
