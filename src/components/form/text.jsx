@@ -27,9 +27,8 @@ export default React.createClass({
     },
 
     render: function() {
-        const placeholder = this.props.placeholder
-            ? this.props.placeholder
-            : this.props.label;
+        const placeholder = this.props.placeholder ? this.props.placeholder : this.props.label;
+        console.log(this.props.type);
         if (this.props.type === "textarea") {
             return (
                 <div className={cx("form-group", this.props.classNames, cx({'has-error': this.state.errMsg}))}>
@@ -39,15 +38,22 @@ export default React.createClass({
                     }))}>{this.state.errMsg}</div>
                 </div>
             );
+        }else if (this.props.type === "liInput") {
+            return (
+                <li>
+                    <label>{this.props.label}</label>
+                    <input type={this.props.type || "text"} ref="input" placeholder={placeholder} value={this.state.value} onChange={this.change} onFocus={this.resetError} />
+                    <div className={cx("error-message", cx({'hide': !this.state.errMsg}))}>{this.state.errMsg}</div>
+                </li>
+            );
+        }else {
+            return (
+                <div className={cx("form-group", this.props.classNames, cx({'has-error': this.state.errMsg}))}>
+                    <input type={this.props.type || "text"} ref="input" placeholder={placeholder} className="form-control" value={this.state.value} onChange={this.change} onFocus={this.resetError}/>
+                    <div className={cx("error-message", cx({'hide': !this.state.errMsg}))}>{this.state.errMsg}</div>
+                </div>
+            );
         }
-        return (
-            <div className={cx("form-group", this.props.classNames, cx({'has-error': this.state.errMsg}))}>
-                <input type={this.props.type || "text"} ref="input" placeholder={placeholder} className="form-control" value={this.state.value} onChange={this.change} onFocus={this.resetError}/>
-                <div className={cx("error-message", cx({
-                    'hide': !this.state.errMsg
-                }))}>{this.state.errMsg}</div>
-            </div>
-        );
     },
 
     change: function(e) {
@@ -76,7 +82,7 @@ export default React.createClass({
             return this.setState({
                 'errMsg': this.props.label + '格式错误'
             });
-        if (this.state.errMsg) 
+        if (this.state.errMsg)
             return null;
         if (this.props.onValid) {
             const message = this.props.onValid(value);

@@ -3,12 +3,12 @@ import {isLogin} from "./app/common/services/authentication";
 import App from "./app/app";
 import NotFound from "./app/pages/components/404";
 import indexRoute from "./app/common/routes";
-import productRoute from "./app/product/routes";
 import authRoute from './app/auth/routes';
 import myRoute from './app/my/routes';
 import pageRoute from './app/pages/routes';
 import perIndexRoute from './app/index/routes';
-import loanRoute from './app/loan/routes'
+import loanRoute from './app/loan/routes';
+import companyRoute from './app/company/routes';
 
 export default {
     component : "div",
@@ -28,7 +28,7 @@ export default {
                 })
             },
             indexRoute: indexRoute,
-            childRoutes: [productRoute, authRoute, myRoute, pageRoute, perIndexRoute, loanRoute]
+            childRoutes: [authRoute, myRoute, pageRoute, perIndexRoute, loanRoute, companyRoute]
         }, {
             path: "*",
             component: NotFound

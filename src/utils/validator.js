@@ -30,7 +30,7 @@ function validatePassword(password) {
 }
 
 function validateCaptch(captch) {
-    if (isEmpty(captch)) 
+    if (isEmpty(captch))
         return '请填写验证码';
     if (!/^[a-zA-Z0-9]{4}$/.test(captch))
         return '验证码错误';
@@ -50,6 +50,14 @@ function validateChineseChar(char, label) {
         return '请填写' + label;
     if (!/^[\u4E00-\u9FFF\u3400-\u4DFF]+$/.test(char))
         return label + '错误，请使用中文填写';
+    return null;
+}
+
+function validateIdNo(char, label) {
+    if (isEmpty(char))
+        return '请填写' + label;
+    if(!/(^\d{15}$)|(^\d{17}(\d|x)$)/i.test(char))
+        return label + '身份证号格式错误';
     return null;
 }
 
@@ -84,5 +92,6 @@ export default {
     validateSmsCode,
     validateChineseChar,
     validateAccount,
-    validateChineseName
+    validateChineseName,
+    validateIdNo
 }

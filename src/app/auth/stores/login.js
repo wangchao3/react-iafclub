@@ -15,12 +15,9 @@ class LoginStore {
     }
 
     onLogin(payload) {
-        if (!payload)
-            return false;
+        if (!payload) return false;
         let data = {};
-        data.type = getParameterByName('type')
-            ? getParameterByName('type')
-            : 10;
+        data.type = getParameterByName('type') ? getParameterByName('type') : 10;
         data.password = payload.password;
         data.phone = payload.phone;
         jsonRequest.post(url.login, data).then((res) => {
@@ -30,7 +27,11 @@ class LoginStore {
                 console.log(res.data.res);
                 auth(res.data.res.token);
                 saveUserInfoToLocal('userInfo', res.data);
-                window.location.href = '/per/index';
+                if (data.type == 20) {
+                    window.location.href = '/company/index';
+                }else {
+                    window.location.href = '/per/index';
+                }
                 this.emitChange();
             }
         });
