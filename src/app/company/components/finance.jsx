@@ -37,7 +37,7 @@ export default React.createClass({
                         <Input type="liInput" ref="first_total_liabilities" name="first_total_liabilities" placeholder="元" label="近一期总负债" isRequired={true} />
                         <Input type="liInput" ref="current_assets" name="current_assets" placeholder="元" label="近一期流动资金" isRequired={true} />
                         <Input type="liInput" ref="current_liabilities" name="current_liabilities" placeholder="元" label="近一期流动负债" isRequired={true} />
-                        <Input type="liInput" ref="income" name="income" placeholder="元" label="近一期主营业务收入" isRequired={true}  />
+                        <Input type="liInput" ref="income" name="income" placeholder="元" label="近一期主营业务收入" isRequired={true} />
                         <Input type="liInput" ref="cost" name="cost" placeholder="元" label="近一期主营业务成本" isRequired={true} />
                         <Input type="liInput" ref="cash_inflow" name="cash_inflow" placeholder="元" label="近一期经营性现金流入" isRequired={true} />
                         <Input type="liInput" ref="cash_outflow" name="cash_outflow" placeholder="元" label="近一期经营性现金流出" isRequired={true} />
@@ -68,6 +68,6 @@ export default React.createClass({
         };
         if (!isValid) return undefined;
         let data = JSON.parse(JSON.stringify(value));
-        FinanceActions.submit(data);
+        FinanceActions.update(data);
     }
 })

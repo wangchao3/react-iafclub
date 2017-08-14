@@ -13,9 +13,9 @@ class FinanceStore {
         this.bindActions(FinanceActions);
     }
 
-    onSubmit(payload) {
+    update(payload) {
         if (!payload) return false;
-        jsonRequest.post(url.Finance_save, payload).then((res) => {
+        jsonRequest.post(url.finance_save, payload).then((res) => {
             if (res.data.code !== '00000000') {
                 MessageActions.show({message: res.data.msg});
             } else {

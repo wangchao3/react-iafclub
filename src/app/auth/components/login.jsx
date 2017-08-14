@@ -34,12 +34,13 @@ export default React.createClass({
     },
 
     render: function() {
+        const type = getParameterByName('type') ? getParameterByName('type') : 10;
         const dataset = {
             phone: {
                 type: "text",
                 name: "phone",
                 isRequired: true,
-                placeholder: "请输入手机号",
+                placeholder: type == 10 ? '请输入手机号' : '请输入企业账户',
                 label: "账号"
             },
             password: {
@@ -50,7 +51,6 @@ export default React.createClass({
                 label: "密码"
             }
         }
-        const type = getParameterByName('type') ? getParameterByName('type') : 10;
         return (
             <div className="auth body-container">
                 <div className="login-body text-center">

@@ -1,3 +1,3 @@
 import alt from '../../alt'
 
-export default alt.generateActions('submit')
+export default alt.generateActions('update')

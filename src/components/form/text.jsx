@@ -28,7 +28,6 @@ export default React.createClass({
 
     render: function() {
         const placeholder = this.props.placeholder ? this.props.placeholder : this.props.label;
-        console.log(this.props.type);
         if (this.props.type === "textarea") {
             return (
                 <div className={cx("form-group", this.props.classNames, cx({'has-error': this.state.errMsg}))}>
