@@ -17,7 +17,7 @@ export default React.createClass({
     componentDidMount: function() {
         FinanceStore.listen(this.onChange);
         HeaderActions.show();
-        HeaderActions.setTitle('财务信息');
+        HeaderActions.setTitle('dhfhjdf');
     },
 
     componentWillUnmount: function() {

@@ -66,7 +66,7 @@ export default React.createClass({
                             <Link className="color-gray" to={`/user/forgot?type=${type}`}>忘记密码</Link>
                         </li>
                         <li className="size12">
-                            <Link className="color-gray" to={`/user/register`}>注册账号</Link>
+                            <Link className="color-gray" to={`/user/register?type=${type}`}>注册账号</Link>
                         </li>
                     </ul>
                 </div>

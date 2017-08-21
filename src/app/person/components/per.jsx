@@ -32,12 +32,13 @@ export default React.createClass({
 
     render: function() {
         const userInfo = getUserInfoFromLocal('userInfo');
+        console.log(userInfo);
         const previewData = this.state.previewData;
         if(!previewData) return(<Spinner />);
         return (
             <div className="perindex body-container">
                 <div className="bodyContent">
-                    <h4>{userInfo.res.name},你好！</h4>
+                    <h4>{userInfo.name},你好！</h4>
                     <div>总额度</div>
                     <h4>{previewData.credit_amount}</h4>
                     <div className="bank-card">
@@ -52,7 +53,7 @@ export default React.createClass({
                         <Link to={`/pages/help`}>借款须知></Link>
                     </div>
                 </div>
-                <Footer name="borrow"/>
+                <Footer name="borrow" type="person" />
             </div>
         );
     }

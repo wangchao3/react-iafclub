@@ -30,6 +30,8 @@ export default React.createClass({
         return (
             <div className="frontpage text-center">
                 <img className="logo" src="/assets/images/index/login.png"/>
+                <img className="figure1" src="/assets/images/index/figure1.png"/>
+                <img className="figure2" src="/assets/images/index/figure2.png"/>
                 <Link className="btn btn-block btn-outlined color-red border-red" to={`/user/login?type=20`}>企业用户</Link>
                 <Link className="btn btn-block btn-red" to={`/user/login?type=10`}>个人用户</Link>
                 <p className="size12 fixBottom">Copyright ©2017-2018 特华小贷保留所有权利</p>

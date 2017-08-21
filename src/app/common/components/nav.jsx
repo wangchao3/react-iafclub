@@ -48,7 +48,7 @@ export default React.createClass({
 
     render: function() {
         const path = location.pathname;
-        if (path === '/' || path === '/my/home'|| path === '/per/index') {
+        if (path === '/' || path === '/my/home'|| path === '/person/index' || path === '/company/index') {
             return (<span/>);
         } else {
             return <a href="#" className="iconfont nav-icon" onClick={this.backAction}>&#xe609;</a>

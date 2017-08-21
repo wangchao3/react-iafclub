@@ -39,7 +39,7 @@ export default React.createClass({
                             <div className="user">
                                 <img src="/assets/images/perindex/head.png"/>
                                 <h1>
-                                    <span className="left-des">{userInfo.res.name}{userInfo.res.phone}</span>
+                                    <span className="left-des">{userInfo.name}{userInfo.phone}</span>
                                 </h1>
                             </div>
                             <span className="badge">个人信息</span>
@@ -81,7 +81,7 @@ export default React.createClass({
                 <div className="logout">
                     <button className="logout-btn" onClick={this.logout}>退出登录</button>
                 </div>
-                <Footer name="home"/>
+                <Footer name="home" type="person" />
             </div>
         );
     },

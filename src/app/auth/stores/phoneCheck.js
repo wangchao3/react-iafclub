@@ -27,7 +27,6 @@ class PhoneCheckStore {
             this.emitChange();
         })
     }
-
 }
 
 export default alt.createStore(PhoneCheckStore, 'PhoneCheckStore')

@@ -32,12 +32,13 @@ export default React.createClass({
 
     render: function() {
         const userInfo = getUserInfoFromLocal('userInfo');
+        console.log(userInfo);
         const previewData = this.state.previewData;
         if(!previewData) return(<Spinner />);
         return (
             <div className="index body-container">
                 <div className="bodyContent">
-                    <h4>{userInfo.res.name},你好！</h4>
+                    <h4>{userInfo.name},你好！</h4>
                     <p>提交资料可获得额度</p>
                     <div className="bank-card">
                         <img src="/assets/images/perindex/bg-card.png"/>

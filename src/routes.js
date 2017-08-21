@@ -6,7 +6,7 @@ import indexRoute from "./app/common/routes";
 import authRoute from './app/auth/routes';
 import myRoute from './app/my/routes';
 import pageRoute from './app/pages/routes';
-import perIndexRoute from './app/index/routes';
+import personRoute from './app/person/routes';
 import loanRoute from './app/loan/routes';
 import companyRoute from './app/company/routes';
 
@@ -28,7 +28,7 @@ export default {
                 })
             },
             indexRoute: indexRoute,
-            childRoutes: [authRoute, myRoute, pageRoute, perIndexRoute, loanRoute, companyRoute]
+            childRoutes: [authRoute, myRoute, pageRoute, personRoute, loanRoute, companyRoute]
         }, {
             path: "*",
             component: NotFound

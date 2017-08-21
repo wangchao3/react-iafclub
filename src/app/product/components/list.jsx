@@ -92,7 +92,7 @@ export default React.createClass({
                         </div>
                     </FixedBar>
                     {productNode}
-                    <Footer name="list"/>
+                    <Footer name="list" type="person" />
                 </div>
             );
         }

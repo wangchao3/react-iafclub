@@ -24,13 +24,12 @@ class LoginStore {
             if (res.data.code !== '00000000') {
                 MessageActions.show({message: res.data.msg});
             } else {
-                console.log(res.data.res);
                 auth(res.data.res.token);
-                saveUserInfoToLocal('userInfo', res.data);
+                saveUserInfoToLocal('userInfo', res.data.res);
                 if (data.type == 20) {
                     window.location.href = '/company/index';
                 }else {
-                    window.location.href = '/per/index';
+                    window.location.href = '/person/index';
                 }
                 this.emitChange();
             }
