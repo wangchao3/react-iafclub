@@ -19,8 +19,8 @@ export default React.createClass({
                 data.borrow = "borrow";
                 companyData.borrow = "borrow";
                 break;
-            case "repay":
-                data.repay = "repay";
+            case "return":
+                data.return = "return";
                 break;
             case "home":
                 data.home = "home";
@@ -57,7 +57,7 @@ export default React.createClass({
                     </Link>
                 </dt>
                 <dt>
-                    <Link to="/product/list" className={data.repay ? 'active' : ''}>
+                    <Link to="/person/payments" className={data.return ? 'active' : ''}>
                         <span className="iconfont">&#xe655;</span>
                         <span>还钱</span>
                     </Link>

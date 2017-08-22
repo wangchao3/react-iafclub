@@ -6,5 +6,9 @@ import financeRoute from './finance'
 export default {
     path: "company",
     onEnter : loginRequired,
-    childRoutes : [infoRoute, indexRoute, financeRoute]
+    childRoutes : [
+        infoRoute,
+        indexRoute,
+        financeRoute
+    ]
 }
