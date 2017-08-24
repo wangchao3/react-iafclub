@@ -56,7 +56,7 @@ export default React.createClass({
                 return (<ErrorPage />);
             }
             return (
-                <div className={cx("amount-content", cx({'indexBg': isIndex}))} ref="app" style={{minHeight: window.innerHeight - 44}}>
+                <div className={cx("amount-content", cx({'indexBg': isIndex}))} ref="app" style={{minHeight: window.innerHeight}}>
                     {this.props.children}
                 </div>
             );

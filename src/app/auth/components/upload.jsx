@@ -31,7 +31,7 @@ export default React.createClass({
 
     render: function() {
         return (
-            <div className="upload">
+            <div className="upload body-container">
                 <div className="bodyContainer">
                     <form className="form" onSubmit={this.onSubmit}>
                         <Form dataset={this.state.dataset} ref="form" />

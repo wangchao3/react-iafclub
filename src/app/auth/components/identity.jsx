@@ -63,7 +63,7 @@ export default React.createClass({
                         <Select options={options} ref="banks" />
                     </div>
                     <div className="input-row">
-                        <label>银行卡绑定手机</label>
+                        <label>绑卡手机</label>
                         <input type="text" placeholder="输入手机号码" ref="cardPhone" />
                     </div>
                     <div className="input-row sendSms">
