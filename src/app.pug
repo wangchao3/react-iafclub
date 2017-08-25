@@ -15,9 +15,6 @@ html
         link(href="/assets/icon/favicon.ico", rel="icon", sizes="120x120")
     body
         #globalMountNode
-        script.
-            var YC = {};
-            YC.current_user = {% if user %}{{user | raw | json_encode}}{% else %}null{% endif %};
         if env === 'production' && hash
             script.
                 var _hmt = _hmt || [];

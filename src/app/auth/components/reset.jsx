@@ -38,7 +38,7 @@ export default React.createClass({
     render: function() {
         return (
             <div className="auth body-container">
-                <div className="login-body">
+                <div className="reset-body">
                     <form onSubmit={this.onSubmit}>
                         <Input type="password" ref="old_pwd" name="old_pwd" placeholder="请填写旧密码" onValid={validator.validatePassword} label="旧密码" isRequired={true}/>
                         <Input type="password" ref="new_pwd" name="new_pwd" placeholder="请填写新密码" onValid={validator.validatePassword} label="新密码" isRequired={true}/>
