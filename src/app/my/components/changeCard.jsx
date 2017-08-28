@@ -60,7 +60,6 @@ export default React.createClass({
                         <span className="right">{userInfo.cellphone}</span>
                         手机号
                     </li>
-
                 </ul>
 
                 <div className="saveBtn">

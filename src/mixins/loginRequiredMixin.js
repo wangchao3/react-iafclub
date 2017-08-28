@@ -14,8 +14,8 @@ const LoginRequired = {
             if(isWechat()) return checkWechatAuth();
             let referer = location.href;
             const path = location.pathname;
-            if(path === '/login' || path === 'register') referr = location.protocol + '//' + location.hostname + '/home';
-            this.replaceWith('login', null, {referer: encodeURIComponent(referer)});
+            if(path === '/user/login' || path === 'user/register') referr = location.protocol + '//' + location.hostname + '/my/home';
+            this.replaceWith('user/login', null, {referer: encodeURIComponent(referer)});
         }
     },
 }

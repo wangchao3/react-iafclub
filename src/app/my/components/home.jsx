@@ -31,6 +31,7 @@ export default React.createClass({
 
     render: function() {
         const userInfo = getUserInfoFromLocal('userInfo');
+        console.log(userInfo);
         return (
             <div className="home body-container">
                 <ul className="table-view j-table-view">
@@ -48,7 +49,7 @@ export default React.createClass({
                 </ul>
                 <ul className="table-view">
                     <li className="table-view-cell">
-                        <Link className="navigate-right">
+                        <Link className="navigate-right" to={`/person/payments`}>
                             <span className="badge">借款记录</span>
                             我的借钱记录
                         </Link>
