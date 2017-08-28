@@ -11,6 +11,8 @@ import Select from '../../../components/selector'
 import {EDUCATION} from '../constants/education'
 import {CHILDREN} from '../constants/children'
 import {MARRIAGE} from '../constants/marriage'
+import ReactDOM from 'react-dom';
+import DatePicker from 'react-mobile-datepicker';
 
 export default React.createClass({
 
@@ -32,8 +34,22 @@ export default React.createClass({
         this.setState(state);
     },
 
+    handleClick: function() {
+        this.setState({isOpen: true});
+    },
+
+    handleCancel: function() {
+        this.setState({isOpen: false});
+    },
+
+    handleSelect: function(value) {
+        let time = value;
+        this.setState({time, isOpen: false});
+    },
+
     render: function() {
         const userInfo = this.state.userInfo;
+        console.log(this.state.time);
         if(!userInfo) return(<Spinner />);
         let eduOptions = [], marryOptions = [], childOptions = [];
         for (var i = 0; i < EDUCATION.length; i++) {
@@ -79,6 +95,19 @@ export default React.createClass({
                         子女情况
                     </li>
                 </ul>
+                <Link
+					className="select-btn"
+					onClick={this.handleClick}>
+					select time
+				</Link>
+
+				<DatePicker
+					value = {this.state.time}
+					isOpen = {this.state.isOpen}
+					onSelect = {this.handleSelect}
+					onCancel = {this.handleCancel}
+                    dateFormat = {['YYYY', 'MM']}
+                    />
 
                 <div className="saveBtn">
                     <button className="btn btn-red btn-block" onClick={this.save}>保存修改</button>

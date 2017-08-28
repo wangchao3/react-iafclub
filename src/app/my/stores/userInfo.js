@@ -8,6 +8,8 @@ class UserInfoStore {
 
     constructor() {
         this.userInfo = '';
+        this.time = new Date();
+        this.isOpen = false;
         this.bindActions(UserInfoActions);
     }
 
