@@ -50,6 +50,7 @@ export default React.createClass({
                 <ul className="table-view">
                     <li className="table-view-cell">
                         <Link className="navigate-right" to={`/person/payments`}>
+                            <span className="iconfont">&#xe6d0;</span>
                             <span className="badge">借款记录</span>
                             我的借钱记录
                         </Link>
@@ -58,6 +59,7 @@ export default React.createClass({
                 <ul className="table-view">
                     <li className="table-view-cell">
                         <Link className="navigate-right" to={`/user/reset`}>
+                            <span className="iconfont">&#xe657;</span>
                             <span className="badge">修改密码</span>
                             账户安全
                         </Link>
@@ -66,6 +68,7 @@ export default React.createClass({
                 <ul className="table-view">
                     <li className="table-view-cell">
                         <Link className="navigate-right" to={`/pages/help`}>
+                            <span className="iconfont">&#xe658;</span>
                             <span className="badge">寻找客服</span>
                             帮助中心
                         </Link>
@@ -74,6 +77,7 @@ export default React.createClass({
                 <ul className="table-view">
                     <li className="table-view-cell">
                         <Link className="navigate-right" to={`/pages/aboutUs`}>
+                            <span className="iconfont">&#xe683;</span>
                             <span className="badge">公司简介</span>
                             关于特华小贷
                         </Link>
