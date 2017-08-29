@@ -9,7 +9,11 @@ class UserInfoStore {
     constructor() {
         this.userInfo = '';
         this.time = new Date();
+        this.job_time = '';
+        this.job_time_recent = '';
+        this.choose = 1;
         this.isOpen = false;
+        this.success = false;
         this.bindActions(UserInfoActions);
     }
 
@@ -17,6 +21,8 @@ class UserInfoStore {
         request.get(url.perinfo).then((res) => {
             if (res.data.code !== '00000000') MessageActions.show({message: res.data.msg});
             this.userInfo = res.data.res;
+            if(this.userInfo.job_time) this.job_time = this.userInfo.job_time;
+            if(this.userInfo.job_time_recent) this.job_time_recent = this.userInfo.job_time_recent;
             this.emitChange();
         });
     }
@@ -25,7 +31,7 @@ class UserInfoStore {
         if(!data) return false;
         jsonRequest.post(url.perinfosave, data).then((res) => {
             if (res.data.code !== '00000000') MessageActions.show({message: res.data.msg});
-            MessageActions.show({message: '保存成功'});
+            this.success = true;
             this.emitChange();
         });
     }

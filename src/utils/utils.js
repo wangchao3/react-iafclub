@@ -36,6 +36,14 @@ export function formatDateTime2(date) {
     return year + '-' + month + '-' + dates ;
 }
 
+export function formatDateTime3(date) {
+    if(typeof date === "number" && date <= 0) throw new Error('invlid time');
+    const dateTime = new Date(date);
+    const year = dateTime.getFullYear();
+    const month = formatTimeDisplay(dateTime.getMonth() + 1);
+    return year + '-' + month ;
+}
+
 function formatTimeDisplay(number) {
     return number < 10 ? '0' + number : number;
 }
