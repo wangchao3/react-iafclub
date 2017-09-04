@@ -44,12 +44,10 @@ export default React.createClass({
     },
 
     render: function(){
-        console.log(location.pathname);
         let isIndex = false;
         if (location.pathname === '/' || location.pathname === '/user/login' || location.pathname === '/user/register') {
             isIndex = true;
         }
-        console.log(isIndex);
         const content = (() => {
             if(this.state.err){
                 if(this.state.err === 404) return (<NotFoundPage />);
